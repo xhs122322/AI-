@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>奥普AUPU · 品牌策划PM运营调研报告</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&display=swap');
+
+  :root {
+    --orange: #C47A1E;
+    --orange-light: #E8A842;
+    --orange-pale: #FEF3C7;
+    --navy: #1E3A5F;
+    --navy-mid: #2F5496;
+    --navy-light: #EBF0F8;
+    --ink: #1A1A1A;
+    --ink-mid: #444444;
+    --ink-soft: #777777;
+    --rule: #E0E0E0;
+    --bg: #F7F6F3;
+    --white: #FFFFFF;
+    --sidebar-w: 260px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: var(--sidebar-w);
+    height: 100vh;
+    background: var(--navy);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    z-index: 100;
+  }
+
+  .sidebar-brand {
+    padding: 28px 24px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .sidebar-brand .logo-text {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--orange-light);
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+  }
+
+  .sidebar-brand .report-type {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .sidebar-nav {
+    padding: 20px 0;
+    flex: 1;
+  }
+
+  .nav-section {
+    padding: 4px 24px 4px;
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 12px;
+  }
+
+  .nav-item {
+    display: block;
+    padding: 9px 24px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+    line-height: 1.4;
+  }
+
+  .nav-item:hover, .nav-item.active {
+    color: var(--white);
+    background: rgba(255,255,255,0.05);
+    border-left-color: var(--orange-light);
+  }
+
+  .nav-num {
+    display: inline-block;
+    width: 20px;
+    font-size: 11px;
+    color: var(--orange-light);
+    opacity: 0.8;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .sidebar-footer {
+    padding: 16px 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+    line-height: 1.6;
+  }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    background: var(--navy);
+    padding: 80px 72px 72px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,122,30,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cover::after {
+    content: 'AUPU';
+    position: absolute;
+    bottom: -20px; right: 40px;
+    font-size: 160px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    letter-spacing: -0.04em;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .cover-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--orange-light);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .cover-title {
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+
+  .cover-title span {
+    color: var(--orange-light);
+  }
+
+  .cover-subtitle {
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 24px;
+    margin-top: 48px;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item {
+    padding: 10px 18px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .cover-meta-item strong {
+    display: block;
+    font-size: 15px;
+    color: var(--white);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  /* ── CONTENT AREA ── */
+  .content-area {
+    padding: 56px 72px;
+    max-width: 1000px;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    margin-bottom: 72px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 18px;
+    border-bottom: 2px solid var(--orange);
+  }
+
+  .section-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--orange);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding-top: 6px;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  .section-title-sub {
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-weight: 400;
+    margin-top: 4px;
+  }
+
+  /* ── SUBSECTION ── */
+  .subsection {
+    margin-bottom: 40px;
+  }
+
+  .subsection-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--orange);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .subsection-title::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 16px;
+    background: var(--orange);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .sub2-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 20px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .sub2-title::before {
+    content: '◆';
+    font-size: 10px;
+    color: var(--orange);
+  }
+
+  /* ── PARAGRAPH ── */
+  p {
+    font-size: 14px;
+    line-height: 1.85;
+    color: var(--ink-mid);
+    margin-bottom: 12px;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight-box {
+    background: var(--navy-light);
+    border-left: 4px solid var(--navy);
+    padding: 18px 22px;
+    border-radius: 0 6px 6px 0;
+    margin: 20px 0;
+  }
+
+  .highlight-box p { color: var(--navy); margin: 0; font-size: 14px; line-height: 1.8; }
+  .highlight-box strong { color: var(--navy); }
+
+  .tip-box {
+    background: var(--orange-pale);
+    border-left: 4px solid var(--orange);
+    padding: 14px 20px;
+    border-radius: 0 6px 6px 0;
+    margin: 16px 0;
+    font-size: 13px;
+    color: #7C5200;
+    line-height: 1.75;
+  }
+
+  /* ── BULLET LIST ── */
+  .bullet-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 16px;
+  }
+
+  .bullet-list li {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--ink-mid);
+    padding: 4px 0 4px 22px;
+    position: relative;
+  }
+
+  .bullet-list li::before {
+    content: '·';
+    position: absolute;
+    left: 6px;
+    color: var(--orange);
+    font-size: 20px;
+    line-height: 1.4;
+    font-weight: 700;
+  }
+
+  /* ── TABLE ── */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 20px 0;
+    border-radius: 8px;
+    border: 1px solid var(--rule);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  thead tr {
+    background: var(--navy);
+  }
+
+  thead th {
+    padding: 13px 16px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  tbody tr:nth-child(odd) { background: var(--white); }
+  tbody tr:nth-child(even) { background: #F9FAFB; }
+  tbody tr:hover { background: var(--orange-pale); }
+
+  tbody td {
+    padding: 13px 16px;
+    vertical-align: top;
+    color: var(--ink-mid);
+    border-bottom: 1px solid var(--rule);
+    line-height: 1.7;
+  }
+
+  tbody td:first-child {
+    font-weight: 600;
+    color: var(--navy);
+    white-space: nowrap;
+  }
+
+  tbody tr:last-child td { border-bottom: none; }
+
+  /* ── VERDICT CHIPS ── */
+  .verdict {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 4px 4px 4px 0;
+  }
+
+  .verdict-confirmed {
+    background: #D1FAE5;
+    color: #065F46;
+    border: 1px solid #A7F3D0;
+  }
+
+  .verdict-likely {
+    background: var(--orange-pale);
+    color: #7C5200;
+    border: 1px solid #FCD34D;
+  }
+
+  .verdict-infer {
+    background: var(--navy-light);
+    color: var(--navy);
+    border: 1px solid #BFD0E8;
+  }
+
+  /* ── FLOW DIAGRAM ── */
+  .flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 20px 0;
+  }
+
+  .flow-step {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .flow-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 40px;
+  }
+
+  .flow-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--orange);
+    flex-shrink: 0;
+    margin-top: 18px;
+  }
+
+  .flow-connector {
+    width: 2px;
+    flex: 1;
+    background: linear-gradient(to bottom, var(--orange), rgba(196,122,30,0.2));
+    min-height: 24px;
+  }
+
+  .flow-card {
+    flex: 1;
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--orange);
+    border-radius: 0 6px 6px 0;
+    padding: 14px 18px;
+    margin: 8px 0;
+  }
+
+  .flow-card-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 5px;
+  }
+
+  .flow-card-desc {
+    font-size: 12.5px;
+    color: var(--ink-mid);
+    line-height: 1.7;
+  }
+
+  .flow-card-tag {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 11px;
+    padding: 2px 8px;
+    background: var(--navy-light);
+    color: var(--navy-mid);
+    border-radius: 3px;
+    font-weight: 500;
+  }
+
+  /* ── RATIO BAR ── */
+  .ratio-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 10px 0;
+  }
+
+  .ratio-label {
+    font-size: 13px;
+    color: var(--ink-mid);
+    width: 100px;
+    flex-shrink: 0;
+    font-weight: 500;
+  }
+
+  .ratio-bar-wrap {
+    flex: 1;
+    height: 10px;
+    background: var(--rule);
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .ratio-bar {
+    height: 100%;
+    border-radius: 5px;
+    background: linear-gradient(90deg, var(--orange), var(--orange-light));
+  }
+
+  .ratio-pct {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--orange);
+    width: 38px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 32px 0;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+    margin: 16px 0;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px; top: 8px; bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--navy), var(--orange));
+  }
+
+  .timeline-item {
+    position: relative;
+    padding: 0 0 22px 20px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -21px;
+    top: 6px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 2.5px solid var(--orange);
+    z-index: 1;
+  }
+
+  .timeline-point {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--orange);
+    margin-bottom: 4px;
+  }
+
+  .timeline-content {
+    font-size: 13.5px;
+    color: var(--ink-mid);
+    line-height: 1.75;
+  }
+
+  /* ── TAG ── */
+  .tag {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .tag-orange { background: var(--orange-pale); color: var(--orange); border: 1px solid #FCD34D; }
+  .tag-navy { background: var(--navy-light); color: var(--navy); border: 1px solid #BFD0E8; }
+  .tag-green { background: #D1FAE5; color: #065F46; border: 1px solid #A7F3D0; }
+
+  /* ── GRID 2COL ── */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 16px 0;
+  }
+
+  .card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--navy);
+    border-radius: 0 0 6px 6px;
+    padding: 18px 20px;
+  }
+
+  .card-orange { border-top-color: var(--orange); }
+
+  .card-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .card p { font-size: 13px; margin-bottom: 6px; }
+
+  /* ── FOOTER ── */
+  .report-footer {
+    padding: 32px 72px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .report-footer span {
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  /* ── SCROLLBAR ── */
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-track { background: transparent; }
+  .sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 860px) {
+    :root { --sidebar-w: 0px; }
+    .sidebar { transform: translateX(-260px); width: 260px; }
+    .main { margin-left: 0; }
+    .cover, .content-area { padding: 36px 24px; }
+    .cover-title { font-size: 28px; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .report-footer { padding: 24px; }
+  }
+
+  @media print {
+    .sidebar { display: none; }
+    .main { margin-left: 0; }
+    body { background: white; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── SIDEBAR ─── -->
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <div class="logo-text">奥普 AUPU</div>
+    <div class="report-type">运营调研报告 · 2026.06</div>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-section">报告目录</div>
+    <a href="#cover" class="nav-item active"><span class="nav-num">00</span>封面总览</a>
+    <a href="#s1" class="nav-item"><span class="nav-num">01</span>整体总结</a>
+    <a href="#s2" class="nav-item"><span class="nav-num">02</span>JD拆解</a>
+    <a href="#s2b" class="nav-item"><span class="nav-num">　</span>岗位定位判断</a>
+    <a href="#s3" class="nav-item"><span class="nav-num">03</span>内容类型与渠道</a>
+    <a href="#s4" class="nav-item"><span class="nav-num">04</span>传播闭环链路</a>
+    <a href="#s5" class="nav-item"><span class="nav-num">05</span>内容策略</a>
+    <a href="#s5b" class="nav-item"><span class="nav-num">　</span>达人合作全链路</a>
+    <a href="#s5c" class="nav-item"><span class="nav-num">　</span>内容迭代三引擎</a>
+    <a href="#s6" class="nav-item"><span class="nav-num">06</span>内容资产与迭代策略</a>
+  </nav>
+  <div class="sidebar-footer">
+    品牌策划PM岗位<br>
+    杭州 · 15~28K · 3~5年<br>
+    内部策略参考文件
+  </div>
+</aside>
+
+<!-- ─── MAIN ─── -->
+<main class="main">
+
+  <!-- COVER -->
+  <section class="cover" id="cover">
+    <div class="cover-eyebrow">Brand Strategy · Operations Research Report</div>
+    <div class="cover-title">奥普 <span>AUPU</span><br>品牌策划PM</div>
+    <div class="cover-subtitle">运营调研报告<br>基于品牌策划PM岗位JD · 全域传播策略参考</div>
+    <div class="cover-meta">
+      <div class="cover-meta-item"><strong>品牌策划PM</strong>标地岗位</div>
+      <div class="cover-meta-item"><strong>15~28K</strong>薪资范围</div>
+      <div class="cover-meta-item"><strong>3~5年</strong>经验要求</div>
+      <div class="cover-meta-item"><strong>杭州</strong>工作地点</div>
+      <div class="cover-meta-item"><strong>2026年6月</strong>内部参考</div>
+    </div>
+  </section>
+
+  <div class="content-area">
+
+    <!-- ─── S1 整体总结 ─── -->
+    <section class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">SECTION 01</div>
+        <div>
+          <div class="section-title">整体总结</div>
+          <div class="section-title-sub">岗位核心价值与品牌面临的主要挑战</div>
+        </div>
+      </div>
+
+      <p>奥普AUPU品牌策划PM岗位，定位于「全域传播统筹者」，而非单一渠道的执行岗。该岗位的核心职能是在品牌与消费者之间构建持续、一致、有感染力的认知链路——覆盖抖音、小红书、视频号、B站等全平台内容矩阵，统筹达人/KOL合作全链路，并在新品上市、节点营销、品牌大事件等关键时刻，实现多渠道整合传播的品效协同。</p>
+
+      <div class="highlight-box">
+        <p><strong>核心判断：</strong>该岗位的本质是「内容策略 × 资源调度 × 数据复盘」三位一体的综合操盘岗。工作重心约 55% 在内容策略侧，30% 在达人/媒介资源整合侧，15% 在数据复盘与品牌策略迭代侧。</p>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title">工作重心分配</div>
+        <div class="ratio-row">
+          <div class="ratio-label">内容策略</div>
+          <div class="ratio-bar-wrap"><div class="ratio-bar" style="width:55%"></div></div>
+          <div class="ratio-pct">55%</div>
+        </div>
+        <div class="ratio-row">
+          <div class="ratio-label">达人资源整合</div>
+          <div class="ratio-bar-wrap"><div class="ratio-bar" style="width:30%; background: linear-gradient(90deg,#2F5496,#5B80C0)"></div></div>
+          <div class="ratio-pct" style="color:var(--navy-mid)">30%</div>
+        </div>
+        <div class="ratio-row">
+          <div class="ratio-label">数据复盘迭代</div>
+          <div class="ratio-bar-wrap"><div class="ratio-bar" style="width:15%; background: linear-gradient(90deg,#555,#888)"></div></div>
+          <div class="ratio-pct" style="color:#555">15%</div>
+        </div>
+      </div>
+
+      <p>奥普作为浴室电器品类头部品牌，面临「从浴霸第一到卫生间人群全覆盖」的品牌破圈挑战，品牌策划PM正是推动这一跃迁的核心执行节点。</p>
+    </section>
+
+    <!-- ─── S2 JD拆解 ─── -->
+    <section class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">SECTION 02</div>
+        <div>
+          <div class="section-title">JD拆解</div>
+          <div class="section-title-sub">JD表面说法 → 真实工作现场 → 隐藏难点</div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>JD表面说法</th>
+              <th>真实工作现场</th>
+              <th>隐藏难点</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>负责品牌全域传播统筹，搭建自媒体内容矩阵</td>
+              <td>每周/月制定各平台内容排期，协调内容、设计、拍摄多个团队同步产出。抖音、小红书、视频号账号发布节奏各异，需要差异化适配。</td>
+              <td>跨平台内容不能简单复制，各平台算法逻辑、用户习惯、内容形态差异大，稍不注意就会「全平台内容平均，没有一个平台做透」。</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>统筹达人/KOL短视频合作全链路</td>
+              <td>从达人筛选→脚本共创→拍摄跟进→千川/信息流投放加热→数据复盘，全程把控。一条达人内容从洽谈到上线平均2~4周。</td>
+              <td>达人内容质量参差不齐，脚本共创是核心卡点：太强势控制会丧失达人真实感，太放手则内容跑偏品牌调性。核心能力是「在达人风格中嵌入品牌卖点不违和」。</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>沉淀品牌内容资产，规范传播话术/视觉/脚本体系</td>
+              <td>将历史爆款内容拆解成可复用的话术公式、脚本骨架、视觉规范，建立品牌内容素材库，让后续执行人员能「套模板」快速产出。</td>
+              <td>内容资产沉淀很难标准化——什么样的内容算「可复用骨架」需要大量跑量数据支撑判断，前期往往靠经验摸索。</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>制定品牌传播策略，完成品牌心智破圈</td>
+              <td>核心目标：让「奥普=卫生间品质生活」这个心智在目标人群中持续强化，而非停留在「浴霸品牌」的单一认知，需要制定长线内容策略。</td>
+              <td>品牌破圈是慢变量，短期难以衡量ROI，但内部考核往往以短期数字为主。品牌PM需要在「短期数字好看」和「长期品牌健康」之间持续博弈。</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>结合新品上市/节点营销策划整合传播方案</td>
+              <td>大促/新品节点提前6~8周启动策划：确定核心传播卖点→制作传播物料→排期达人内容→协调电商/渠道/PR同步发声。</td>
+              <td>整合传播最难的不是创意，是「协同」——设计/电商/PR/达人/投放各方节奏不一，品牌PM需要成为各方信息汇聚节点，任何一方延误都影响整体效果。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 岗位定位 -->
+      <div id="s2b" class="subsection" style="margin-top:40px">
+        <div class="subsection-title">岗位定位判断</div>
+        <div class="grid-2">
+          <div class="card card-orange">
+            <div class="card-title">岗位性质</div>
+            <p>操盘统筹岗，非纯执行岗。需要独立制定内容策略方向，并驱动多团队落地执行。</p>
+            <span class="verdict verdict-confirmed">✓ 已证实</span>
+          </div>
+          <div class="card card-orange">
+            <div class="card-title">核心竞争力</div>
+            <p>「爆款内容判断力」+「跨平台内容差异化理解」+「达人生态资源积累」，三者缺一不可。</p>
+            <span class="verdict verdict-confirmed">✓ 已证实</span>
+          </div>
+          <div class="card">
+            <div class="card-title">KPI猜测</div>
+            <p>账号粉丝增长、内容播放/互动率、达人合作ROI、节点传播声量（品牌搜索指数）、品牌心智度（NPS/提及率）。</p>
+            <span class="verdict verdict-likely">大概率判断</span>
+          </div>
+          <div class="card">
+            <div class="card-title">品类特殊性</div>
+            <p>卫浴/环境电器是强场景品类，用户消费决策深度依赖「真实使用场景」的内容教育，内容真实感比制作精良度更关键。</p>
+            <span class="verdict verdict-infer">推测</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── S3 内容类型与渠道 ─── -->
+    <section class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">SECTION 03</div>
+        <div>
+          <div class="section-title">内容类型与渠道范围</div>
+          <div class="section-title-sub">六类内容形态 × 四大平台渠道分工</div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title">内容类型</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>内容类型</th><th>平台适配</th><th>核心目的</th><th>奥普执行要点</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>场景种草型</td>
+                <td><span class="tag tag-orange">小红书</span> <span class="tag tag-orange">抖音</span></td>
+                <td>建立「浴室/卫生间高品质生活」联想，突破产品功能叙事</td>
+                <td>以装修记录、入住体验、冬季浴室温暖感为场景入口，弱化「卖货」感</td>
+              </tr>
+              <tr>
+                <td>技术硬核演示型</td>
+                <td><span class="tag tag-orange">抖音</span> <span class="tag tag-navy">B站</span></td>
+                <td>建立专业可信赖感，差异化竞品认知</td>
+                <td>浴霸功率/加热速度横评、换气净化可视化测试、防水防爆性能演示</td>
+              </tr>
+              <tr>
+                <td>达人测评二剪型</td>
+                <td><span class="tag tag-orange">抖音千川</span></td>
+                <td>借达人真实体验背书，降低千川冷启动门槛</td>
+                <td>头部家装/家居/生活类达人深度测评，剪取30~60s核心亮点投千川</td>
+              </tr>
+              <tr>
+                <td>问题解决型（避坑/攻略）</td>
+                <td><span class="tag tag-orange">小红书</span> <span class="tag tag-orange">抖音</span></td>
+                <td>拦截装修决策期用户，建立品牌首选心智</td>
+                <td>「浴霸怎么选」「集成吊顶避坑」「卫生间改造预算分配」等高搜索量选题</td>
+              </tr>
+              <tr>
+                <td>品牌故事/IP型</td>
+                <td><span class="tag tag-orange">抖音</span> <span class="tag tag-navy">视频号</span> <span class="tag tag-navy">B站</span></td>
+                <td>建立品牌情感深度，提升品牌溢价空间</td>
+                <td>奥普技术匠心故事、产品研发背后、品质承诺类内容，积累品牌资产</td>
+              </tr>
+              <tr>
+                <td>节点促销型</td>
+                <td><span class="tag tag-green">全平台</span></td>
+                <td>大促/新品节点流量爆发，驱动GMV</td>
+                <td>618/双十一/国补/新品首发专项，价格锚点+限时紧迫感+赠品组合</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title">渠道范围与分工</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>渠道</th><th>核心角色</th><th>内容策略重点</th><th>奥普当前机会</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>抖音</td>
+                <td>种草+收割双驱动（自然流+千川投放）</td>
+                <td>短直联动，短视频引流直播间成交；千川加热达人内容和自有内容双轨并行</td>
+                <td>加强「卫生间改造」「浴室冬天不冷了」等场景词的搜索拦截布局</td>
+              </tr>
+              <tr>
+                <td>小红书</td>
+                <td>品牌种草主阵地，精装修用户核心触点</td>
+                <td>图文+短视频双格式；以家居博主/装修博主为主，强调真实生活感</td>
+                <td>「新房装修清单」「浴室改造避坑」「卫生间好物推荐」等高互动选题矩阵</td>
+              </tr>
+              <tr>
+                <td>B站</td>
+                <td>深度教育+跨圈种草</td>
+                <td>长视频硬核测评、安装教程、横向对比，建立深度信任</td>
+                <td>攻略类内容（「浴室电器全套购买指南」）对男性装修决策者影响力大</td>
+              </tr>
+              <tr>
+                <td>视频号</td>
+                <td>私域流量沉淀+微信生态扩散</td>
+                <td>结合微信生态，以真实用户案例、品牌故事为主，适合长线品牌内容</td>
+                <td>联动经销商/安装工程师发布内容，覆盖下沉市场决策人群</td>
+              </tr>
+              <tr>
+                <td>微信公众号/社群</td>
+                <td>深度用户维护+口碑放大</td>
+                <td>购买用户运营，激励UGC内容产出，打造真实买家秀生态</td>
+                <td>建立「奥普用户打卡」内容激励机制，UGC素材反哺抖音/小红书内容池</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── S4 闭环链路 ─── -->
+    <section class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">SECTION 04</div>
+        <div>
+          <div class="section-title">品牌传播完整闭环链路</div>
+          <div class="section-title-sub">从曝光蓄水到口碑反哺的自我强化闭环</div>
+        </div>
+      </div>
+
+      <p>品牌策划PM的核心价值，在于将「内容生产→流量获取→用户教育→品牌心智建立→购买转化→口碑反哺」构建成一个自我强化的完整闭环，而非单次传播事件。</p>
+
+      <div class="flow" style="margin: 28px 0;">
+        <div class="flow-step">
+          <div class="flow-line"><div class="flow-dot"></div><div class="flow-connector"></div></div>
+          <div class="flow-card">
+            <div class="flow-card-title">【曝光蓄水】认知破圈</div>
+            <div class="flow-card-desc">达人种草内容自然传播 + 千川/信息流加热 + 小红书SEO布局 + 平台搜索广告拦截</div>
+            <span class="flow-card-tag">小红书 · 抖音 · B站</span>
+            <span class="flow-card-tag" style="background:var(--orange-pale);color:var(--orange)">PM职责：确定传播选题矩阵，匹配达人层级分配预算</span>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-line"><div class="flow-dot"></div><div class="flow-connector"></div></div>
+          <div class="flow-card">
+            <div class="flow-card-title">【内容说服】品类教育</div>
+            <div class="flow-card-desc">场景种草（建立使用联想）→ 技术背书（建立专业可信度）→ 用户证言（消除购买顾虑）</div>
+            <span class="flow-card-tag">抖音 · 小红书 · B站</span>
+            <span class="flow-card-tag" style="background:var(--orange-pale);color:var(--orange)">PM职责：制定内容策略框架，规范脚本骨架和话术体系</span>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-line"><div class="flow-dot"></div><div class="flow-connector"></div></div>
+          <div class="flow-card">
+            <div class="flow-card-title">【决策拦截】品牌优选</div>
+            <div class="flow-card-desc">搜索词布局（「浴霸哪个牌子好」「集成吊顶品牌推荐」）+ 竞品对比内容 + KOL深度测评</div>
+            <span class="flow-card-tag">小红书搜索 · 抖音搜索 · B站</span>
+            <span class="flow-card-tag" style="background:var(--orange-pale);color:var(--orange)">PM职责：建立高价值搜索词内容覆盖清单，定期监控内容份额</span>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-line"><div class="flow-dot"></div><div class="flow-connector"></div></div>
+          <div class="flow-card">
+            <div class="flow-card-title">【转化承接】成交收割</div>
+            <div class="flow-card-desc">直播间成交（日播+大促直播）+ 商品详情页 + 平台店铺搜索</div>
+            <span class="flow-card-tag">抖音直播 · 京东 · 天猫</span>
+            <span class="flow-card-tag" style="background:var(--orange-pale);color:var(--orange)">PM职责：节点传播方案与电商部门协同，确保流量峰值期承接在线</span>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-line"><div class="flow-dot"></div></div>
+          <div class="flow-card">
+            <div class="flow-card-title">【口碑放大】UGC回流</div>
+            <div class="flow-card-desc">已购用户「到手测评」「装修完工打卡」内容激励 → 回流种草池成为新素材原料</div>
+            <span class="flow-card-tag">小红书 · 抖音评论区 · 微信</span>
+            <span class="flow-card-tag" style="background:var(--orange-pale);color:var(--orange)">PM职责：建立UGC激励机制，优质买家内容二次加工为官方素材</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title">节点传播时间轴（标准新品/大促节点）</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-point">T - 8周 · 策略制定期</div>
+            <div class="timeline-content">确定核心传播卖点、目标人群、各渠道预算分配、达人名单初筛。<strong>输出传播策略文档，对齐产品/电商/PR各方。</strong></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-point">T - 4周 · 内容预热期</div>
+            <div class="timeline-content">达人脚本共创、内容审核上线、小红书SEO内容铺量、品牌搜索词布局。<strong>跟进达人内容质量，启动千川加热测试素材CTR。</strong></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-point">T - 2周 · 蓄水加速期</div>
+            <div class="timeline-content">加大千川投放预算、腰部达人密集发布、引流层素材集中上线。<strong>监控内容热度数据，实时调整素材跑量策略。</strong></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-point">T - 0 · 大促爆发日</div>
+            <div class="timeline-content">官方账号直播+密集素材投流，头部达人内容同步发酵，全平台统一话题词聚合声量。<strong>实时盯盘，快速上线备用素材，处理突发舆情。</strong></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-point">T + 1周 · 长尾复盘期</div>
+            <div class="timeline-content">汇总各渠道传播数据，提炼爆款内容公式，归档可复用素材模板。<strong>输出复盘报告，更新品牌内容资产库。</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── S5 内容策略 ─── -->
+    <section class="section" id="s5">
+      <div class="section-header">
+        <div class="section-num">SECTION 05</div>
+        <div>
+          <div class="section-title">内容策略</div>
+          <div class="section-title-sub">全平台矩阵分发 · 达人合作全链路 · 三引擎迭代</div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title">全平台内容分发策略 — 一品牌多面孔矩阵</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>账号/平台</th><th>内容定位</th><th>核心驱动力</th><th>差异化内容资产</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>奥普AUPU抖音官号</td>
+                <td>生活方式品牌账号，「卫生间品质生活」代言人</td>
+                <td>场景情感共鸣 + 价格促销钩子</td>
+                <td>「冬天再也不怕洗澡冷」「装修后悔系列」真实痛点叙事体系</td>
+              </tr>
+              <tr>
+                <td>奥普官方旗舰店抖音</td>
+                <td>产品力说服账号，驱动直播间成交</td>
+                <td>技术参数可视化 + 竞品对比 + 限时促销</td>
+                <td>「功率实测横评」「30天使用反馈」「安装工程师讲解」等信任背书内容</td>
+              </tr>
+              <tr>
+                <td>小红书奥普账号</td>
+                <td>精致生活种草账号，俘获装修期女性用户</td>
+                <td>颜值+品质+真实生活感</td>
+                <td>「我家卫生间改造全记录」「入住一年真实体验」「浴室好物清单」图文内容</td>
+              </tr>
+              <tr>
+                <td>B站奥普账号</td>
+                <td>专业评测账号，影响男性购买决策者</td>
+                <td>数据对比 + 技术深度 + 安装教程</td>
+                <td>「浴霸全品类横评」「集成吊顶安装全流程」「卫浴品牌年度盘点」</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 达人合作 -->
+      <div class="subsection" id="s5b">
+        <div class="subsection-title">达人合作全链路策略</div>
+        <p>达人合作是品牌策划PM工作量最大、最容易失控的模块。标准化全链路管理是提升效率的核心：</p>
+        <div class="table-wrap" style="margin-top:14px">
+          <table>
+            <thead>
+              <tr><th>链路环节</th><th>关键动作</th><th>质控要点</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>达人筛选</td>
+                <td>蝉妈妈/飞瓜数据筛选 → 人工评审内容风格 → 评论区真实度抽查 → 历史合作品牌画像匹配</td>
+                <td>优先选「粉丝真实互动率&gt;3%」+「内容风格与奥普调性契合」+「粉丝中装修/家居兴趣占比高」的达人</td>
+              </tr>
+              <tr>
+                <td>脚本共创</td>
+                <td>品牌方提供「卖点清单+禁止表述」，达人基于自身风格自由发挥；PM审核脚本重点看「卖点是否自然融入」</td>
+                <td>不要强求达人逐字照本宣科；允许达人用自己的语言表达，保持内容真实感是转化率的核心变量</td>
+              </tr>
+              <tr>
+                <td>拍摄跟进</td>
+                <td>提前确认拍摄时间、场景道具、产品安装条件；重要合作派品牌方人员现场跟进</td>
+                <td>浴室电器需要真实安装场景，避免「道具摆拍」导致评论区质疑内容真实性</td>
+              </tr>
+              <tr>
+                <td>投放把控</td>
+                <td>达人内容上线后24h监控自然流数据，CTR&gt;3%启动千川加热；自然流数据优秀可追加预算做信息流二次扩量</td>
+                <td>千川加热达人内容时注意「商业化标注」合规要求，避免违规导致账号扣分</td>
+              </tr>
+              <tr>
+                <td>数据复盘</td>
+                <td>记录每条达人内容：播放量/完播率/互动率/带来的搜索增量/直接转化GMV，建立可量化的达人合作ROI数据库</td>
+                <td>复盘周期为合作完成后7天+30天两次，30天数据更能反映内容对品牌搜索和长尾转化的真实贡献</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 三引擎 -->
+      <div class="subsection" id="s5c">
+        <div class="subsection-title">内容迭代策略 — 三引擎驱动</div>
+        <div class="grid-2" style="gap:16px;margin-top:16px">
+          <div class="card card-orange" style="grid-column:1/-1">
+            <div class="card-title">🔥 驱动引擎一：爆款内容出现</div>
+            <p>一旦某条内容出现「播放量/互动率显著高于均值」（通常为账号平均值3倍以上），立即进行拆解：是选题赢了，还是开头钩子赢了，还是特定卖点点燃了共鸣？将爆款骨架提炼为可复用模板，在2周内快速产出3~5条变体测试，验证是「偶发性爆款」还是「可持续跑量骨架」。</p>
+          </div>
+          <div class="card">
+            <div class="card-title">🚀 驱动引擎二：产品线迭代</div>
+            <p>新品上市倒逼内容策略整体升级。以奥普为例：若推出「AI智能温控浴霸」，内容策略需从「取暖功能」升级为「智慧家居生活体验」，配套调整达人选择，重新校准各平台内容侧重。产品上市前2~3周应完成配套素材库更新。</p>
+          </div>
+          <div class="card">
+            <div class="card-title">🔍 驱动引擎三：竞品与行业动态</div>
+            <p>每月对主要竞品（华帝、欧普、雷士、鸿雁等）进行一次内容拆解：他们在跑什么选题？哪类达人合作频率最高？竞品突然在小红书密集铺量往往预示着大促准备或新品发布，品牌PM需提前预判并制定差异化应对。</p>
+          </div>
+        </div>
+        <div class="tip-box" style="margin-top:16px">💡 三个引擎不是并列关系——产品迭代决定内容方向，爆款出现决定内容原料，竞品动态决定内容节奏。</div>
+      </div>
+    </section>
+
+    <!-- ─── S6 内容资产 ─── -->
+    <section class="section" id="s6">
+      <div class="section-header">
+        <div class="section-num">SECTION 06</div>
+        <div>
+          <div class="section-title">内容资产沉淀与素材迭代策略</div>
+          <div class="section-title-sub">三层资产体系 · SOP化素材结构 · 精力分配模型</div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title">品牌内容资产体系建设</div>
+        <p>「规范传播话术、视觉、视频脚本体系」是JD中明确要求，建议建立以下三层内容资产体系：</p>
+        <div class="table-wrap" style="margin-top:14px">
+          <table>
+            <thead>
+              <tr><th>资产层级</th><th>内容构成</th><th>更新频率</th><th>使用场景</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>第一层<br>脚本骨架库</td>
+                <td>经过数据验证的高转化内容骨架（痛点型/技术型/场景型/价格型），每套骨架包含「叙事逻辑+信息排序+CTA方式」</td>
+                <td>季度更新1~2套新骨架</td>
+                <td>达人脚本共创参考底稿；新员工内容创作培训材料</td>
+              </tr>
+              <tr>
+                <td>第二层<br>话术卖点库</td>
+                <td>奥普核心卖点的标准化表述（不同平台/不同人群/不同场景各一套）；禁用表述和合规红线清单</td>
+                <td>新品上市时同步更新</td>
+                <td>达人brief制作；直播话术编写；广告素材文案</td>
+              </tr>
+              <tr>
+                <td>第三层<br>素材原料库</td>
+                <td>历史优质内容截图/片段；用户UGC真实评价；产品使用场景图片库；品牌视觉规范文件</td>
+                <td>月度归档补充</td>
+                <td>日常内容创作取材；达人参考案例展示；节点快速出图</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title">素材迭代SOP — 三层结构</div>
+        <div class="sub2-title">第一层：脚本骨架层（固定周期替换）</div>
+        <p>决定素材的核心叙事逻辑。浴室电器品类主力骨架：痛点激活→产品解决方案→效果呈现→社会认同→CTA。骨架不轻易更换，仅在数据出现系统性衰退（CTR连续下降超过30%）时考虑整体替换。</p>
+
+        <div class="sub2-title">第二层：可变槽位层（高频替换）</div>
+        <p>在固定骨架内替换差异化元素，产生内容多样性而不损失系统学习数据：</p>
+        <ul class="bullet-list">
+          <li>开场钩子：「冬天洗澡有多冷」场景 / 「浴霸选错了后悔10年」警示 / 「测了10款浴霸只推这一款」测评</li>
+          <li>核心卖点展示：取暖速度/换气效率/防水性能/节能数据，根据季节和目标人群轮换</li>
+          <li>社会证明元素：销量数据/用户好评截图/专业机构认证/工程师推荐</li>
+          <li>促销信息：当期价格/满减活动/国补金额/限时赠品，每场直播前必须同步更新</li>
+        </ul>
+
+        <div class="sub2-title">第三层：迭代周期层（数据驱动节奏）</div>
+        <p>收割层素材（25~40s强促销）：每5~7天AB测试替换一次开场钩子；种草层素材（45~90s）评估周期延长至10~14天；同一骨架跑满3~4周后启动整体母版替换，防止频控衰退。</p>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title">精力分配模型</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>精力占比</th><th>工作内容</th><th>产出目标</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>55% 日常内容执行</td>
+                <td>达人内容跟进、账号日常内容排期发布、素材审核、数据监控</td>
+                <td>保障各平台稳定内容输出，维持账号活跃度与自然流量基本盘</td>
+              </tr>
+              <tr>
+                <td>25% 策略与规划</td>
+                <td>月度/季度内容策略制定、节点传播方案策划、达人资源开拓与关系维护</td>
+                <td>前瞻性布局，确保资源在关键节点充分就位，不出现临时抱佛脚</td>
+              </tr>
+              <tr>
+                <td>15% 内容资产沉淀</td>
+                <td>爆款内容拆解、话术库更新、脚本骨架归档、竞品内容调研</td>
+                <td>建立可持续复用的内容资产，减少对个人经验的依赖</td>
+              </tr>
+              <tr>
+                <td>5% 跨部门协同</td>
+                <td>与产品/电商/PR/设计团队对齐传播节点和内容方向</td>
+                <td>避免各部门信息孤岛，确保品牌声音在各渠道统一一致</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="highlight-box" style="margin-top:20px">
+          <p><strong>SOP化保证内容下限，策略迭代争取内容上限，资产沉淀降低长期边际成本</strong>——三者缺一不可，也构成了品牌策划PM的核心不可替代性。否则3个月后团队只会填槽，不会创造，品牌声量将逐步被动态迭代的竞品超越。</p>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /content-area -->
+
+  <footer class="report-footer">
+    <span>奥普AUPU · 品牌策划PM岗位 · 运营调研报告</span>
+    <span>2026年6月 · 内部策略参考文件</span>
+  </footer>
+
+</main>
+
+<script>
+  // Active nav highlight on scroll
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navItems = document.querySelectorAll('.nav-item');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navItems.forEach(item => item.classList.remove('active'));
+        const active = document.querySelector(`.nav-item[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
