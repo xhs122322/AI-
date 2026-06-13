@@ -3,24 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>奥普AUPU · 品牌策划PM运营调研报告</title>
+<title>奥普AUPU 品牌策划PM新媒体运营业务报告</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@400;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&family=Noto+Sans+SC:wght@300;400;500&display=swap');
 
   :root {
-    --orange: #C47A1E;
-    --orange-light: #E8A842;
-    --orange-pale: #FEF3C7;
-    --navy: #1E3A5F;
-    --navy-mid: #2F5496;
-    --navy-light: #EBF0F8;
-    --ink: #1A1A1A;
-    --ink-mid: #444444;
-    --ink-soft: #777777;
-    --rule: #E0E0E0;
-    --bg: #F7F6F3;
-    --white: #FFFFFF;
-    --sidebar-w: 260px;
+    --ink: #1a1917;
+    --ink-mid: #4a4845;
+    --ink-muted: #8a8880;
+    --ink-faint: #c8c6c0;
+    --paper: #faf9f6;
+    --paper-warm: #f2efe8;
+    --paper-card: #ffffff;
+    --accent: #c8401a;
+    --accent-light: #f5e8e3;
+    --teal: #0f6e56;
+    --teal-light: #e1f5ee;
+    --blue: #185fa5;
+    --blue-light: #e6f1fb;
+    --amber: #854f0b;
+    --amber-light: #faeeda;
+    --purple: #534ab7;
+    --purple-light: #eeedfe;
+    --rule: #d8d5ce;
+    --font-display: 'Noto Serif SC', serif;
+    --font-body: 'Noto Sans SC', sans-serif;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,1241 +35,2665 @@
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    background: var(--bg);
+    background: var(--paper);
     color: var(--ink);
-    display: flex;
-    min-height: 100vh;
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* ── SIDEBAR ── */
-  .sidebar {
-    position: fixed;
-    top: 0; left: 0;
-    width: var(--sidebar-w);
-    height: 100vh;
-    background: var(--navy);
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
     z-index: 100;
+    background: rgba(250,249,246,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 0.5px solid var(--rule);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    height: 52px;
   }
-
-  .sidebar-brand {
-    padding: 28px 24px 20px;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
-
-  .sidebar-brand .logo-text {
-    font-size: 20px;
-    font-weight: 900;
-    color: var(--orange-light);
-    letter-spacing: 0.02em;
-    line-height: 1.2;
-  }
-
-  .sidebar-brand .report-type {
-    font-size: 11px;
-    color: rgba(255,255,255,0.45);
-    margin-top: 5px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  .sidebar-nav {
-    padding: 20px 0;
-    flex: 1;
-  }
-
-  .nav-section {
-    padding: 4px 24px 4px;
-    font-size: 10px;
-    color: rgba(255,255,255,0.3);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-top: 12px;
-  }
-
-  .nav-item {
-    display: block;
-    padding: 9px 24px;
+  .nav-brand {
+    font-family: var(--font-display);
     font-size: 13px;
-    color: rgba(255,255,255,0.6);
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    margin-right: auto;
+  }
+  nav a {
+    font-size: 12px;
+    color: var(--ink-muted);
     text-decoration: none;
-    transition: all 0.15s;
-    border-left: 3px solid transparent;
-    line-height: 1.4;
+    letter-spacing: 0.02em;
+    transition: color 0.15s;
+    white-space: nowrap;
   }
+  nav a:hover { color: var(--ink); }
 
-  .nav-item:hover, .nav-item.active {
-    color: var(--white);
-    background: rgba(255,255,255,0.05);
-    border-left-color: var(--orange-light);
+  /* ── HERO ── */
+  .hero {
+    padding: 80px 40px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+    border-bottom: 0.5px solid var(--rule);
   }
-
-  .nav-num {
-    display: inline-block;
-    width: 20px;
-    font-size: 11px;
-    color: var(--orange-light);
-    opacity: 0.8;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-
-  .sidebar-footer {
-    padding: 16px 24px;
-    border-top: 1px solid rgba(255,255,255,0.08);
-    font-size: 11px;
-    color: rgba(255,255,255,0.25);
-    line-height: 1.6;
-  }
-
-  /* ── MAIN CONTENT ── */
-  .main {
-    margin-left: var(--sidebar-w);
-    flex: 1;
-    min-width: 0;
-  }
-
-  /* ── COVER ── */
-  .cover {
-    background: var(--navy);
-    padding: 80px 72px 72px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .cover::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 400px; height: 400px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(196,122,30,0.18) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .cover::after {
-    content: 'AUPU';
-    position: absolute;
-    bottom: -20px; right: 40px;
-    font-size: 160px;
-    font-weight: 900;
-    color: rgba(255,255,255,0.03);
-    letter-spacing: -0.04em;
-    pointer-events: none;
-    user-select: none;
-  }
-
-  .cover-eyebrow {
+  .hero-eyebrow {
     font-size: 11px;
     font-weight: 500;
-    color: var(--orange-light);
-    letter-spacing: 0.18em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--ink);
     margin-bottom: 24px;
-  }
-
-  .cover-title {
-    font-size: 42px;
-    font-weight: 900;
-    color: var(--white);
-    line-height: 1.15;
     letter-spacing: -0.01em;
-    margin-bottom: 8px;
   }
-
-  .cover-title span {
-    color: var(--orange-light);
+  .hero-desc {
+    font-size: 16px;
+    color: var(--ink-mid);
+    line-height: 1.75;
+    max-width: 640px;
+    margin-bottom: 32px;
   }
-
-  .cover-subtitle {
-    font-size: 18px;
-    font-weight: 300;
-    color: rgba(255,255,255,0.55);
-    margin-top: 12px;
-    line-height: 1.5;
-  }
-
-  .cover-meta {
+  .hero-meta {
     display: flex;
-    gap: 24px;
-    margin-top: 48px;
+    gap: 32px;
     flex-wrap: wrap;
   }
+  .meta-item { display: flex; flex-direction: column; gap: 2px; }
+  .meta-label { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+  .meta-value { font-size: 13px; font-weight: 500; color: var(--ink); }
 
-  .cover-meta-item {
-    padding: 10px 18px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 4px;
-    font-size: 12px;
-    color: rgba(255,255,255,0.5);
-  }
+  /* ── LAYOUT ── */
+  .page { max-width: 900px; margin: 0 auto; padding: 0 40px; }
 
-  .cover-meta-item strong {
-    display: block;
-    font-size: 15px;
-    color: var(--white);
-    font-weight: 600;
-    margin-bottom: 2px;
-  }
-
-  /* ── CONTENT AREA ── */
-  .content-area {
-    padding: 56px 72px;
-    max-width: 1000px;
-  }
-
-  /* ── SECTION ── */
+  /* ── SECTIONS ── */
   .section {
-    margin-bottom: 72px;
+    padding: 64px 0 48px;
+    border-bottom: 0.5px solid var(--rule);
   }
+  .section:last-child { border-bottom: none; }
 
   .section-header {
     display: flex;
-    align-items: flex-start;
+    align-items: baseline;
     gap: 16px;
-    margin-bottom: 28px;
-    padding-bottom: 18px;
-    border-bottom: 2px solid var(--orange);
+    margin-bottom: 36px;
   }
-
   .section-num {
+    font-family: var(--font-display);
     font-size: 11px;
-    font-weight: 700;
-    color: var(--orange);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding-top: 6px;
-    flex-shrink: 0;
-  }
-
-  .section-title {
-    font-size: 26px;
-    font-weight: 800;
-    color: var(--navy);
-    line-height: 1.25;
-    letter-spacing: -0.01em;
-  }
-
-  .section-title-sub {
-    font-size: 13px;
-    color: var(--ink-soft);
-    font-weight: 400;
-    margin-top: 4px;
-  }
-
-  /* ── SUBSECTION ── */
-  .subsection {
-    margin-bottom: 40px;
-  }
-
-  .subsection-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--orange);
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .subsection-title::before {
-    content: '';
-    display: inline-block;
-    width: 4px;
-    height: 16px;
-    background: var(--orange);
-    border-radius: 2px;
-    flex-shrink: 0;
-  }
-
-  .sub2-title {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--navy);
-    margin: 20px 0 10px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .sub2-title::before {
-    content: '◆';
-    font-size: 10px;
-    color: var(--orange);
-  }
-
-  /* ── PARAGRAPH ── */
-  p {
-    font-size: 14px;
-    line-height: 1.85;
-    color: var(--ink-mid);
-    margin-bottom: 12px;
-  }
-
-  /* ── HIGHLIGHT BOX ── */
-  .highlight-box {
-    background: var(--navy-light);
-    border-left: 4px solid var(--navy);
-    padding: 18px 22px;
-    border-radius: 0 6px 6px 0;
-    margin: 20px 0;
-  }
-
-  .highlight-box p { color: var(--navy); margin: 0; font-size: 14px; line-height: 1.8; }
-  .highlight-box strong { color: var(--navy); }
-
-  .tip-box {
-    background: var(--orange-pale);
-    border-left: 4px solid var(--orange);
-    padding: 14px 20px;
-    border-radius: 0 6px 6px 0;
-    margin: 16px 0;
-    font-size: 13px;
-    color: #7C5200;
-    line-height: 1.75;
-  }
-
-  /* ── BULLET LIST ── */
-  .bullet-list {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0 16px;
-  }
-
-  .bullet-list li {
-    font-size: 14px;
-    line-height: 1.8;
-    color: var(--ink-mid);
-    padding: 4px 0 4px 22px;
-    position: relative;
-  }
-
-  .bullet-list li::before {
-    content: '·';
-    position: absolute;
-    left: 6px;
-    color: var(--orange);
-    font-size: 20px;
-    line-height: 1.4;
-    font-weight: 700;
-  }
-
-  /* ── TABLE ── */
-  .table-wrap {
-    overflow-x: auto;
-    margin: 20px 0;
-    border-radius: 8px;
-    border: 1px solid var(--rule);
-    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-  }
-
-  thead tr {
-    background: var(--navy);
-  }
-
-  thead th {
-    padding: 13px 16px;
-    text-align: left;
-    font-size: 12px;
+    color: var(--accent);
     font-weight: 600;
-    color: var(--white);
-    letter-spacing: 0.04em;
-    white-space: nowrap;
+    letter-spacing: 0.06em;
+    flex-shrink: 0;
+    padding-top: 4px;
+  }
+  .section h2 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+  .section-intro {
+    font-size: 14px;
+    color: var(--ink-mid);
+    line-height: 1.8;
+    margin-bottom: 32px;
+    padding-left: 36px;
+    max-width: 680px;
   }
 
-  tbody tr:nth-child(odd) { background: var(--white); }
-  tbody tr:nth-child(even) { background: #F9FAFB; }
-  tbody tr:hover { background: var(--orange-pale); }
+  /* ── CARDS ── */
+  .card-grid {
+    display: grid;
+    gap: 12px;
+  }
+  .card-grid-2 { grid-template-columns: 1fr 1fr; }
+  .card-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .card-grid-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
 
-  tbody td {
-    padding: 13px 16px;
-    vertical-align: top;
+  .card {
+    background: var(--paper-card);
+    border: 0.5px solid var(--rule);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .card-accent-top {
+    height: 3px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+  }
+  .card h3 {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .card p, .card li {
+    font-size: 12px;
     color: var(--ink-mid);
-    border-bottom: 1px solid var(--rule);
     line-height: 1.7;
   }
-
-  tbody td:first-child {
-    font-weight: 600;
-    color: var(--navy);
-    white-space: nowrap;
+  .card ul { list-style: none; }
+  .card ul li { padding: 3px 0 3px 14px; position: relative; }
+  .card ul li::before {
+    content: '·';
+    position: absolute;
+    left: 4px;
+    color: var(--ink-faint);
+    font-size: 16px;
+    line-height: 1.3;
   }
 
-  tbody tr:last-child td { border-bottom: none; }
-
-  /* ── VERDICT CHIPS ── */
-  .verdict {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 5px 12px;
-    border-radius: 3px;
-    font-size: 12px;
-    font-weight: 600;
-    margin: 4px 4px 4px 0;
+  /* ── BADGES ── */
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-bottom: 10px;
   }
+  .badge-accent { background: var(--accent-light); color: var(--accent); }
+  .badge-teal { background: var(--teal-light); color: var(--teal); }
+  .badge-blue { background: var(--blue-light); color: var(--blue); }
+  .badge-amber { background: var(--amber-light); color: var(--amber); }
+  .badge-purple { background: var(--purple-light); color: var(--purple); }
+  .badge-gray { background: var(--paper-warm); color: var(--ink-mid); }
 
-  .verdict-confirmed {
-    background: #D1FAE5;
-    color: #065F46;
-    border: 1px solid #A7F3D0;
-  }
-
-  .verdict-likely {
-    background: var(--orange-pale);
-    color: #7C5200;
-    border: 1px solid #FCD34D;
-  }
-
-  .verdict-infer {
-    background: var(--navy-light);
-    color: var(--navy);
-    border: 1px solid #BFD0E8;
-  }
-
-  /* ── FLOW DIAGRAM ── */
-  .flow {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin: 20px 0;
-  }
-
-  .flow-step {
+  /* ── FLOW CHAIN ── */
+  .flow-chain {
     display: flex;
     align-items: stretch;
     gap: 0;
+    margin: 28px 0;
+    overflow-x: auto;
   }
-
-  .flow-line {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-shrink: 0;
-    width: 40px;
-  }
-
-  .flow-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--orange);
-    flex-shrink: 0;
-    margin-top: 18px;
-  }
-
-  .flow-connector {
-    width: 2px;
+  .flow-step {
     flex: 1;
-    background: linear-gradient(to bottom, var(--orange), rgba(196,122,30,0.2));
-    min-height: 24px;
+    min-width: 110px;
+    background: var(--paper-card);
+    border: 0.5px solid var(--rule);
+    border-radius: 10px;
+    padding: 16px 14px;
+    text-align: center;
+    position: relative;
   }
-
-  .flow-card {
-    flex: 1;
-    background: var(--white);
-    border: 1px solid var(--rule);
-    border-left: 3px solid var(--orange);
-    border-radius: 0 6px 6px 0;
-    padding: 14px 18px;
-    margin: 8px 0;
+  .flow-step.highlight {
+    border-color: var(--teal);
+    background: var(--teal-light);
   }
-
-  .flow-card-title {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 5px;
-  }
-
-  .flow-card-desc {
-    font-size: 12.5px;
-    color: var(--ink-mid);
-    line-height: 1.7;
-  }
-
-  .flow-card-tag {
-    display: inline-block;
-    margin-top: 6px;
-    font-size: 11px;
-    padding: 2px 8px;
-    background: var(--navy-light);
-    color: var(--navy-mid);
-    border-radius: 3px;
+  .flow-step .fs-num {
+    font-size: 10px;
     font-weight: 500;
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+  .flow-step .fs-title {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+  .flow-step .fs-sub {
+    font-size: 11px;
+    color: var(--ink-muted);
+    line-height: 1.5;
+  }
+  .flow-step.highlight .fs-title { color: var(--teal); }
+  .flow-arrow {
+    display: flex;
+    align-items: center;
+    padding: 0 6px;
+    color: var(--ink-faint);
+    font-size: 14px;
+    flex-shrink: 0;
   }
 
-  /* ── RATIO BAR ── */
-  .ratio-row {
+  /* ── PHASE BLOCK ── */
+  .phase-block {
+    margin-bottom: 20px;
+    background: var(--paper-card);
+    border: 0.5px solid var(--rule);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .phase-header {
     display: flex;
     align-items: center;
     gap: 14px;
-    margin: 10px 0;
+    padding: 14px 20px;
+    border-bottom: 0.5px solid var(--rule);
+    background: var(--paper-warm);
   }
-
-  .ratio-label {
-    font-size: 13px;
-    color: var(--ink-mid);
-    width: 100px;
-    flex-shrink: 0;
-    font-weight: 500;
-  }
-
-  .ratio-bar-wrap {
-    flex: 1;
-    height: 10px;
-    background: var(--rule);
-    border-radius: 5px;
-    overflow: hidden;
-  }
-
-  .ratio-bar {
-    height: 100%;
-    border-radius: 5px;
-    background: linear-gradient(90deg, var(--orange), var(--orange-light));
-  }
-
-  .ratio-pct {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--orange);
-    width: 38px;
-    text-align: right;
-    flex-shrink: 0;
-  }
-
-  /* ── DIVIDER ── */
-  .divider {
-    border: none;
-    border-top: 1px solid var(--rule);
-    margin: 32px 0;
-  }
-
-  /* ── TIMELINE ── */
-  .timeline {
-    position: relative;
-    padding-left: 28px;
-    margin: 16px 0;
-  }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 7px; top: 8px; bottom: 8px;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--navy), var(--orange));
-  }
-
-  .timeline-item {
-    position: relative;
-    padding: 0 0 22px 20px;
-  }
-
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -21px;
-    top: 6px;
-    width: 10px; height: 10px;
+  .phase-dot {
+    width: 8px; height: 8px;
     border-radius: 50%;
-    background: var(--white);
-    border: 2.5px solid var(--orange);
-    z-index: 1;
+    flex-shrink: 0;
   }
-
-  .timeline-point {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--orange);
-    margin-bottom: 4px;
+  .phase-header h4 {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    flex: 1;
   }
-
-  .timeline-content {
-    font-size: 13.5px;
-    color: var(--ink-mid);
-    line-height: 1.75;
-  }
-
-  /* ── TAG ── */
-  .tag {
-    display: inline-block;
-    padding: 3px 9px;
-    border-radius: 3px;
+  .phase-ratio {
     font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
+    font-weight: 500;
+    color: var(--ink-muted);
+    font-family: var(--font-display);
   }
-
-  .tag-orange { background: var(--orange-pale); color: var(--orange); border: 1px solid #FCD34D; }
-  .tag-navy { background: var(--navy-light); color: var(--navy); border: 1px solid #BFD0E8; }
-  .tag-green { background: #D1FAE5; color: #065F46; border: 1px solid #A7F3D0; }
-
-  /* ── GRID 2COL ── */
-  .grid-2 {
+  .phase-body {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin: 16px 0;
+    gap: 0;
+  }
+  .phase-col {
+    padding: 16px 20px;
+    border-right: 0.5px solid var(--rule);
+  }
+  .phase-col:last-child { border-right: none; }
+  .phase-col-title {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .phase-col ul { list-style: none; }
+  .phase-col ul li {
+    font-size: 12px;
+    color: var(--ink-mid);
+    padding: 3px 0 3px 12px;
+    position: relative;
+    line-height: 1.6;
+  }
+  .phase-col ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--ink-faint);
+    font-size: 10px;
+    top: 6px;
   }
 
-  .card {
-    background: var(--white);
-    border: 1px solid var(--rule);
-    border-top: 3px solid var(--navy);
-    border-radius: 0 0 6px 6px;
-    padding: 18px 20px;
+  /* ── RATIO BAR ── */
+  .ratio-bar {
+    display: flex;
+    height: 5px;
+    border-radius: 3px;
+    overflow: hidden;
+    gap: 2px;
+    margin: 8px 0 12px;
+  }
+  .rb { border-radius: 3px; }
+
+  /* ── KEYWORD TABLE ── */
+  .kw-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 24px;
+  }
+  .kw-group {
+    background: var(--paper-card);
+    border: 0.5px solid var(--rule);
+    border-radius: 10px;
+    padding: 16px;
+  }
+  .kw-group h4 {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .kw-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .kw-tag {
+    font-size: 11px;
+    background: var(--paper-warm);
+    border: 0.5px solid var(--rule);
+    border-radius: 4px;
+    padding: 2px 7px;
+    color: var(--ink-mid);
   }
 
-  .card-orange { border-top-color: var(--orange); }
+  /* ── PM ROLE ── */
+  .role-grid {
+    display: grid;
+    grid-template-columns: 1fr 2px 1fr 2px 1fr;
+    gap: 0;
+    background: var(--paper-card);
+    border: 0.5px solid var(--rule);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .role-divider { background: var(--rule); }
+  .role-col { padding: 20px; }
+  .role-col h4 {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .role-col .role-sub {
+    font-size: 11px;
+    color: var(--ink-muted);
+    margin-bottom: 12px;
+  }
+  .role-col ul { list-style: none; }
+  .role-col ul li {
+    font-size: 12px;
+    color: var(--ink-mid);
+    padding: 3px 0 3px 12px;
+    position: relative;
+    line-height: 1.6;
+  }
+  .role-col ul li::before {
+    content: '·';
+    position: absolute;
+    left: 3px;
+    color: var(--ink-faint);
+    font-size: 16px;
+    line-height: 1;
+    top: 4px;
+  }
 
-  .card-title {
+  /* ── CALENDAR ── */
+  .calendar {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 0;
+    background: var(--paper-card);
+    border: 0.5px solid var(--rule);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .cal-row {
+    display: contents;
+  }
+  .cal-label {
+    padding: 14px 12px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink-muted);
+    letter-spacing: 0.04em;
+    background: var(--paper-warm);
+    border-bottom: 0.5px solid var(--rule);
+    border-right: 0.5px solid var(--rule);
+    display: flex;
+    align-items: flex-start;
+  }
+  .cal-content {
+    padding: 12px 16px;
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .cal-row:last-child .cal-label,
+  .cal-row:last-child .cal-content { border-bottom: none; }
+  .cal-task {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 3px 0;
+  }
+  .cal-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+  .cal-text {
+    font-size: 12px;
+    color: var(--ink-mid);
+    line-height: 1.6;
+  }
+  .cal-note {
+    font-size: 11px;
+    color: var(--ink-muted);
+    margin-top: 1px;
+  }
+
+  /* ── KPI GRID ── */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .kpi-card {
+    background: var(--paper-warm);
+    border-radius: 10px;
+    padding: 16px;
+  }
+  .kpi-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .kpi-metric {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .kpi-note {
+    font-size: 11px;
+    color: var(--ink-muted);
+    line-height: 1.5;
+  }
+
+  /* ── INSIGHT BOX ── */
+  .insight {
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 20px 0;
     font-size: 13px;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 8px;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    border-radius: 0 8px 8px 0;
   }
+  .insight strong { color: var(--accent); font-weight: 500; }
 
-  .card p { font-size: 13px; margin-bottom: 6px; }
+  .insight-teal {
+    background: var(--teal-light);
+    border-left-color: var(--teal);
+  }
+  .insight-teal strong { color: var(--teal); }
+
+  .insight-amber {
+    background: var(--amber-light);
+    border-left-color: var(--amber);
+  }
+  .insight-amber strong { color: var(--amber); }
+
+  /* ── DELIVERABLES ── */
+  .deliverable-row {
+    display: grid;
+    grid-template-columns: 120px 1fr 100px;
+    align-items: start;
+    padding: 14px 0;
+    border-bottom: 0.5px solid var(--rule);
+    gap: 20px;
+  }
+  .deliverable-row:last-child { border-bottom: none; }
+  .del-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .del-desc {
+    font-size: 12px;
+    color: var(--ink-mid);
+    line-height: 1.6;
+  }
+  .del-freq {
+    font-size: 11px;
+    color: var(--ink-muted);
+    text-align: right;
+  }
 
   /* ── FOOTER ── */
-  .report-footer {
-    padding: 32px 72px;
-    border-top: 1px solid var(--rule);
+  footer {
+    border-top: 0.5px solid var(--rule);
+    padding: 32px 40px;
+    max-width: 900px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
   }
-
-  .report-footer span {
-    font-size: 12px;
-    color: var(--ink-soft);
+  .footer-brand {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
   }
-
-  /* ── SCROLLBAR ── */
-  .sidebar::-webkit-scrollbar { width: 4px; }
-  .sidebar::-webkit-scrollbar-track { background: transparent; }
-  .sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+  .footer-note {
+    font-size: 11px;
+    color: var(--ink-muted);
+  }
 
   /* ── RESPONSIVE ── */
-  @media (max-width: 860px) {
-    :root { --sidebar-w: 0px; }
-    .sidebar { transform: translateX(-260px); width: 260px; }
-    .main { margin-left: 0; }
-    .cover, .content-area { padding: 36px 24px; }
-    .cover-title { font-size: 28px; }
-    .grid-2 { grid-template-columns: 1fr; }
-    .report-footer { padding: 24px; }
+  @media (max-width: 700px) {
+    nav { gap: 16px; padding: 0 20px; }
+    nav a:nth-child(n+4) { display: none; }
+    .hero, .page { padding-left: 20px; padding-right: 20px; }
+    .card-grid-2, .card-grid-3, .card-grid-4,
+    .phase-body, .kpi-grid, .kw-section,
+    .role-grid { grid-template-columns: 1fr; }
+    .role-divider { display: none; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
   }
 
-  @media print {
-    .sidebar { display: none; }
-    .main { margin-left: 0; }
-    body { background: white; }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
   }
 </style>
 </head>
 <body>
 
-<!-- ─── SIDEBAR ─── -->
-<aside class="sidebar">
-  <div class="sidebar-brand">
-    <div class="logo-text">奥普 AUPU</div>
-    <div class="report-type">运营调研报告 · 2026.06</div>
-  </div>
-  <nav class="sidebar-nav">
-    <div class="nav-section">报告目录</div>
-    <a href="#cover" class="nav-item active"><span class="nav-num">00</span>封面总览</a>
-    <a href="#s1" class="nav-item"><span class="nav-num">01</span>整体总结</a>
-    <a href="#s2" class="nav-item"><span class="nav-num">02</span>JD拆解</a>
-    <a href="#s2b" class="nav-item"><span class="nav-num">　</span>岗位定位判断</a>
-    <a href="#s3" class="nav-item"><span class="nav-num">03</span>内容类型与渠道</a>
-    <a href="#s4" class="nav-item"><span class="nav-num">04</span>传播闭环链路</a>
-    <a href="#s5" class="nav-item"><span class="nav-num">05</span>内容策略</a>
-    <a href="#s5b" class="nav-item"><span class="nav-num">　</span>达人合作全链路</a>
-    <a href="#s5c" class="nav-item"><span class="nav-num">　</span>内容迭代三引擎</a>
-    <a href="#s6" class="nav-item"><span class="nav-num">06</span>内容资产与迭代策略</a>
-  </nav>
-  <div class="sidebar-footer">
-    品牌策划PM岗位<br>
-    杭州 · 15~28K · 3~5年<br>
-    内部策略参考文件
-  </div>
-</aside>
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-brand">AUPU 奥普 · 品牌运营报告</div>
+  <a href="#overview">概述</a>
+  <a href="#channels">渠道矩阵</a>
+  <a href="#loop">传播闭环</a>
+  <a href="#kfs">KFS策略</a>
+  <a href="#douyin">抖音打法</a>
+  <a href="#pm-role">PM职能</a>
+  <a href="#kpi">考核指标</a>
+  <a href="#competitor">竞品对标</a>
+  <a href="#kol">达人管理</a>
+  <a href="#calendar">年度日历</a>
+  <a href="#crisis">风险预案</a>
+  <a href="#sop">执行SOP</a>
+  <a href="#douyin">抖音打法</a>
+  <a href="#douyin-sop">抖音SOP</a>
+</nav>
 
-<!-- ─── MAIN ─── -->
-<main class="main">
-
-  <!-- COVER -->
-  <section class="cover" id="cover">
-    <div class="cover-eyebrow">Brand Strategy · Operations Research Report</div>
-    <div class="cover-title">奥普 <span>AUPU</span><br>品牌策划PM</div>
-    <div class="cover-subtitle">运营调研报告<br>基于品牌策划PM岗位JD · 全域传播策略参考</div>
-    <div class="cover-meta">
-      <div class="cover-meta-item"><strong>品牌策划PM</strong>标地岗位</div>
-      <div class="cover-meta-item"><strong>15~28K</strong>薪资范围</div>
-      <div class="cover-meta-item"><strong>3~5年</strong>经验要求</div>
-      <div class="cover-meta-item"><strong>杭州</strong>工作地点</div>
-      <div class="cover-meta-item"><strong>2026年6月</strong>内部参考</div>
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-eyebrow">Brand Strategy & Operations</div>
+  <h1>奥普AUPU 品牌策划PM<br>新媒体运营业务全流程报告</h1>
+  <p class="hero-desc">
+    本报告系统梳理奥普AUPU品牌策划PM在新媒体运营业务中的完整工作框架，涵盖内容类型与渠道策略、品牌传播闭环链路、KFS打法设计、日常运营节奏及核心考核体系，目标是实现品牌声量持续积累与销售线索高效转化的双重目的。
+  </p>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <span class="meta-label">文档类型</span>
+      <span class="meta-value">运营策略报告</span>
     </div>
-  </section>
+    <div class="meta-item">
+      <span class="meta-label">适用角色</span>
+      <span class="meta-value">品牌策划PM</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">核心目标</span>
+      <span class="meta-value">品牌传播 + 线索转化</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">覆盖范围</span>
+      <span class="meta-value">全渠道新媒体运营</span>
+    </div>
+  </div>
+</div>
 
-  <div class="content-area">
+<div class="page">
 
-    <!-- ─── S1 整体总结 ─── -->
-    <section class="section" id="s1">
-      <div class="section-header">
-        <div class="section-num">SECTION 01</div>
-        <div>
-          <div class="section-title">整体总结</div>
-          <div class="section-title-sub">岗位核心价值与品牌面临的主要挑战</div>
-        </div>
+<!-- ── 01 业务概述 ── -->
+<section class="section" id="overview">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2>业务概述与核心目标</h2>
+  </div>
+  <p class="section-intro">
+    奥普AUPU作为中国浴霸行业先驱，创立于1993年，现已形成浴霸、集成吊顶、凉霸、晾衣机等多品类矩阵。在存量竞争和家居行业数字化加速的背景下，品牌策划PM的核心任务是将品牌战略转化为可执行的内容运营体系，通过多平台协同实现从认知建立到线索转化的完整链路。
+  </p>
+
+  <div class="card-grid card-grid-3">
+    <div class="card">
+      <div class="card-accent-top" style="background: var(--accent)"></div>
+      <span class="badge badge-accent">战略主张</span>
+      <h3>"浴霸不只是取暖"</h3>
+      <p>从单一产品向一站式卫浴/厨房/阳台空间解决方案升级，品牌内容必须承载这一认知转型，而不只是推销产品功能。</p>
+    </div>
+    <div class="card">
+      <div class="card-accent-top" style="background: var(--teal)"></div>
+      <span class="badge badge-teal">传播目标</span>
+      <h3>品牌声量持续积累</h3>
+      <p>在小红书、抖音等平台建立持续种草能力，扩大品牌搜索份额（SOV），让用户在装修决策时首先想到奥普。</p>
+    </div>
+    <div class="card">
+      <div class="card-accent-top" style="background: var(--blue)"></div>
+      <span class="badge badge-blue">转化目标</span>
+      <h3>销售线索高效转化</h3>
+      <p>通过直播、搜索卡位、电商详情页等环节，将种草内容带来的意向用户引导至购买决策，提升全链路转化效率。</p>
+    </div>
+  </div>
+
+  <div class="insight" style="margin-top: 24px">
+    <strong>核心定位：</strong>品牌策划PM不是"写稿子的"，也不是"投广告的"——而是把品牌意图翻译成内容语言，再把内容数据转化回业务判断的系统性角色。管的是整个内容生产和传播的系统，不是某一个执行环节。
+  </div>
+</section>
+
+<!-- ── 02 渠道矩阵 ── -->
+<section class="section" id="channels">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2>内容类型与渠道矩阵</h2>
+  </div>
+  <p class="section-intro">
+    奥普的新媒体渠道策略遵循"货架+内容"双线并行逻辑：以抖音和小红书为内容种草主阵地，以京东/天猫/拼多多为销售承接阵地，以微信生态为私域沉淀阵地，通过三类阵地协同实现全链路覆盖。
+  </p>
+
+  <div class="card-grid card-grid-2" style="margin-bottom: 16px">
+    <div class="card">
+      <span class="badge badge-accent">核心转化阵地</span>
+      <h3>抖音 — 高频曝光与直播转化</h3>
+      <ul>
+        <li>店铺自播：每日高频开播，产品演示+优惠促单，是最直接的转化渠道</li>
+        <li>达人合播：头部家装博主/明星合作，节点爆发，百万级曝光</li>
+        <li>短视频种草：产品功能演示、场景效果展示、用户口碑切片</li>
+        <li>信息流投放：把优质内容推给精准装修人群，扩大声量</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="badge badge-teal">种草心智阵地</span>
+      <h3>小红书 — 搜索种草与心智建立</h3>
+      <ul>
+        <li>图文笔记：家装场景效果图、装修攻略、选购避坑指南</li>
+        <li>KOL/KOC矩阵：腰部垂类博主精准渗透，素人真实口碑批量铺量</li>
+        <li>搜索场景卡位：覆盖品牌词/品类词/场景词，拦截决策关口</li>
+        <li>KFS组合投放：内容种草+信息流+搜索广告三角协同</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="badge badge-blue">私域沉淀阵地</span>
+      <h3>微信生态 — 用户留存与复购</h3>
+      <ul>
+        <li>公众号：品牌故事、新品发布、深度内容沉淀，长期资产积累</li>
+        <li>视频号：短视频内容同步，配合朋友圈投放触达熟人社交圈</li>
+        <li>企业微信：私域用户运营，老用户维护，线索跟进与复购促进</li>
+        <li>社群：装修用户聚集，UGC激励，口碑裂变</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="badge badge-amber">货架销售阵地</span>
+      <h3>电商平台 — 销售承接与转化</h3>
+      <ul>
+        <li>京东/天猫：详情页内容优化，好评运营，大促节点重点投入</li>
+        <li>拼多多：价格敏感用户覆盖，百亿补贴渠道布局</li>
+        <li>内容与货架打通：小红书/抖音种草内容直接引流至电商平台</li>
+        <li>大促节奏配合：内容种草提前2-4周铺垫，大促期集中收割转化</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="background: var(--paper-card); border: 0.5px solid var(--rule); border-radius: 10px; padding: 20px; margin-top: 8px">
+    <div style="font-size: 12px; font-weight: 500; color: var(--ink-muted); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 16px">内容类型与渠道匹配关系</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px">
+      <div>
+        <div class="badge badge-teal" style="margin-bottom: 8px">场景种草内容</div>
+        <p style="font-size: 12px; color: var(--ink-mid); line-height: 1.6">卫浴/厨房/阳台改造效果展示，家装前后对比，生活方式叙事。主要投放渠道：小红书图文 + 抖音短视频。</p>
       </div>
-
-      <p>奥普AUPU品牌策划PM岗位，定位于「全域传播统筹者」，而非单一渠道的执行岗。该岗位的核心职能是在品牌与消费者之间构建持续、一致、有感染力的认知链路——覆盖抖音、小红书、视频号、B站等全平台内容矩阵，统筹达人/KOL合作全链路，并在新品上市、节点营销、品牌大事件等关键时刻，实现多渠道整合传播的品效协同。</p>
-
-      <div class="highlight-box">
-        <p><strong>核心判断：</strong>该岗位的本质是「内容策略 × 资源调度 × 数据复盘」三位一体的综合操盘岗。工作重心约 55% 在内容策略侧，30% 在达人/媒介资源整合侧，15% 在数据复盘与品牌策略迭代侧。</p>
+      <div>
+        <div class="badge badge-blue" style="margin-bottom: 8px">功能讲解内容</div>
+        <p style="font-size: 12px; color: var(--ink-mid); line-height: 1.6">智能联控演示、安全技术解析、产品性能对比。主要投放渠道：抖音短视频 + 电商详情页。</p>
       </div>
-
-      <div class="subsection">
-        <div class="subsection-title">工作重心分配</div>
-        <div class="ratio-row">
-          <div class="ratio-label">内容策略</div>
-          <div class="ratio-bar-wrap"><div class="ratio-bar" style="width:55%"></div></div>
-          <div class="ratio-pct">55%</div>
-        </div>
-        <div class="ratio-row">
-          <div class="ratio-label">达人资源整合</div>
-          <div class="ratio-bar-wrap"><div class="ratio-bar" style="width:30%; background: linear-gradient(90deg,#2F5496,#5B80C0)"></div></div>
-          <div class="ratio-pct" style="color:var(--navy-mid)">30%</div>
-        </div>
-        <div class="ratio-row">
-          <div class="ratio-label">数据复盘迭代</div>
-          <div class="ratio-bar-wrap"><div class="ratio-bar" style="width:15%; background: linear-gradient(90deg,#555,#888)"></div></div>
-          <div class="ratio-pct" style="color:#555">15%</div>
-        </div>
+      <div>
+        <div class="badge badge-amber" style="margin-bottom: 8px">干货攻略内容</div>
+        <p style="font-size: 12px; color: var(--ink-mid); line-height: 1.6">装修选购指南、卫生间改造清单、避坑建议。主要投放渠道：小红书笔记 + 微信公众号。</p>
       </div>
-
-      <p>奥普作为浴室电器品类头部品牌，面临「从浴霸第一到卫生间人群全覆盖」的品牌破圈挑战，品牌策划PM正是推动这一跃迁的核心执行节点。</p>
-    </section>
-
-    <!-- ─── S2 JD拆解 ─── -->
-    <section class="section" id="s2">
-      <div class="section-header">
-        <div class="section-num">SECTION 02</div>
-        <div>
-          <div class="section-title">JD拆解</div>
-          <div class="section-title-sub">JD表面说法 → 真实工作现场 → 隐藏难点</div>
-        </div>
+      <div>
+        <div class="badge badge-accent" style="margin-bottom: 8px">口碑UGC内容</div>
+        <p style="font-size: 12px; color: var(--ink-mid); line-height: 1.6">真实用户开箱晒单、素人测评、买家秀。主要投放渠道：小红书 + 抖音评论区 + 电商好评。</p>
       </div>
-
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>JD表面说法</th>
-              <th>真实工作现场</th>
-              <th>隐藏难点</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>负责品牌全域传播统筹，搭建自媒体内容矩阵</td>
-              <td>每周/月制定各平台内容排期，协调内容、设计、拍摄多个团队同步产出。抖音、小红书、视频号账号发布节奏各异，需要差异化适配。</td>
-              <td>跨平台内容不能简单复制，各平台算法逻辑、用户习惯、内容形态差异大，稍不注意就会「全平台内容平均，没有一个平台做透」。</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>统筹达人/KOL短视频合作全链路</td>
-              <td>从达人筛选→脚本共创→拍摄跟进→千川/信息流投放加热→数据复盘，全程把控。一条达人内容从洽谈到上线平均2~4周。</td>
-              <td>达人内容质量参差不齐，脚本共创是核心卡点：太强势控制会丧失达人真实感，太放手则内容跑偏品牌调性。核心能力是「在达人风格中嵌入品牌卖点不违和」。</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>沉淀品牌内容资产，规范传播话术/视觉/脚本体系</td>
-              <td>将历史爆款内容拆解成可复用的话术公式、脚本骨架、视觉规范，建立品牌内容素材库，让后续执行人员能「套模板」快速产出。</td>
-              <td>内容资产沉淀很难标准化——什么样的内容算「可复用骨架」需要大量跑量数据支撑判断，前期往往靠经验摸索。</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>制定品牌传播策略，完成品牌心智破圈</td>
-              <td>核心目标：让「奥普=卫生间品质生活」这个心智在目标人群中持续强化，而非停留在「浴霸品牌」的单一认知，需要制定长线内容策略。</td>
-              <td>品牌破圈是慢变量，短期难以衡量ROI，但内部考核往往以短期数字为主。品牌PM需要在「短期数字好看」和「长期品牌健康」之间持续博弈。</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>结合新品上市/节点营销策划整合传播方案</td>
-              <td>大促/新品节点提前6~8周启动策划：确定核心传播卖点→制作传播物料→排期达人内容→协调电商/渠道/PR同步发声。</td>
-              <td>整合传播最难的不是创意，是「协同」——设计/电商/PR/达人/投放各方节奏不一，品牌PM需要成为各方信息汇聚节点，任何一方延误都影响整体效果。</td>
-            </tr>
-          </tbody>
-        </table>
+      <div>
+        <div class="badge badge-purple" style="margin-bottom: 8px">直播内容</div>
+        <p style="font-size: 12px; color: var(--ink-mid); line-height: 1.6">店铺日常自播（高频）+ 达人/明星合播（节点爆发）。主要投放渠道：抖音 + 视频号。</p>
       </div>
-
-      <!-- 岗位定位 -->
-      <div id="s2b" class="subsection" style="margin-top:40px">
-        <div class="subsection-title">岗位定位判断</div>
-        <div class="grid-2">
-          <div class="card card-orange">
-            <div class="card-title">岗位性质</div>
-            <p>操盘统筹岗，非纯执行岗。需要独立制定内容策略方向，并驱动多团队落地执行。</p>
-            <span class="verdict verdict-confirmed">✓ 已证实</span>
-          </div>
-          <div class="card card-orange">
-            <div class="card-title">核心竞争力</div>
-            <p>「爆款内容判断力」+「跨平台内容差异化理解」+「达人生态资源积累」，三者缺一不可。</p>
-            <span class="verdict verdict-confirmed">✓ 已证实</span>
-          </div>
-          <div class="card">
-            <div class="card-title">KPI猜测</div>
-            <p>账号粉丝增长、内容播放/互动率、达人合作ROI、节点传播声量（品牌搜索指数）、品牌心智度（NPS/提及率）。</p>
-            <span class="verdict verdict-likely">大概率判断</span>
-          </div>
-          <div class="card">
-            <div class="card-title">品类特殊性</div>
-            <p>卫浴/环境电器是强场景品类，用户消费决策深度依赖「真实使用场景」的内容教育，内容真实感比制作精良度更关键。</p>
-            <span class="verdict verdict-infer">推测</span>
-          </div>
-        </div>
+      <div>
+        <div class="badge badge-gray" style="margin-bottom: 8px">品牌故事内容</div>
+        <p style="font-size: 12px; color: var(--ink-mid); line-height: 1.6">1993年创业故事、故宫/华为联名、公益行动。主要投放渠道：公众号 + 品牌官网。</p>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <!-- ─── S3 内容类型与渠道 ─── -->
-    <section class="section" id="s3">
-      <div class="section-header">
-        <div class="section-num">SECTION 03</div>
-        <div>
-          <div class="section-title">内容类型与渠道范围</div>
-          <div class="section-title-sub">六类内容形态 × 四大平台渠道分工</div>
-        </div>
-      </div>
+<!-- ── 03 传播闭环 ── -->
+<section class="section" id="loop">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2>品牌传播完整闭环链路</h2>
+  </div>
+  <p class="section-intro">
+    奥普的传播链路遵循"AISAS+私域反哺"的完整闭环：从内容曝光建立认知，到用户主动搜索表达意向，到直播/电商完成转化，再到老用户UGC反哺新一轮种草。每个环节都有对应的内容策略和渠道配置。
+  </p>
 
-      <div class="subsection">
-        <div class="subsection-title">内容类型</div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr><th>内容类型</th><th>平台适配</th><th>核心目的</th><th>奥普执行要点</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>场景种草型</td>
-                <td><span class="tag tag-orange">小红书</span> <span class="tag tag-orange">抖音</span></td>
-                <td>建立「浴室/卫生间高品质生活」联想，突破产品功能叙事</td>
-                <td>以装修记录、入住体验、冬季浴室温暖感为场景入口，弱化「卖货」感</td>
-              </tr>
-              <tr>
-                <td>技术硬核演示型</td>
-                <td><span class="tag tag-orange">抖音</span> <span class="tag tag-navy">B站</span></td>
-                <td>建立专业可信赖感，差异化竞品认知</td>
-                <td>浴霸功率/加热速度横评、换气净化可视化测试、防水防爆性能演示</td>
-              </tr>
-              <tr>
-                <td>达人测评二剪型</td>
-                <td><span class="tag tag-orange">抖音千川</span></td>
-                <td>借达人真实体验背书，降低千川冷启动门槛</td>
-                <td>头部家装/家居/生活类达人深度测评，剪取30~60s核心亮点投千川</td>
-              </tr>
-              <tr>
-                <td>问题解决型（避坑/攻略）</td>
-                <td><span class="tag tag-orange">小红书</span> <span class="tag tag-orange">抖音</span></td>
-                <td>拦截装修决策期用户，建立品牌首选心智</td>
-                <td>「浴霸怎么选」「集成吊顶避坑」「卫生间改造预算分配」等高搜索量选题</td>
-              </tr>
-              <tr>
-                <td>品牌故事/IP型</td>
-                <td><span class="tag tag-orange">抖音</span> <span class="tag tag-navy">视频号</span> <span class="tag tag-navy">B站</span></td>
-                <td>建立品牌情感深度，提升品牌溢价空间</td>
-                <td>奥普技术匠心故事、产品研发背后、品质承诺类内容，积累品牌资产</td>
-              </tr>
-              <tr>
-                <td>节点促销型</td>
-                <td><span class="tag tag-green">全平台</span></td>
-                <td>大促/新品节点流量爆发，驱动GMV</td>
-                <td>618/双十一/国补/新品首发专项，价格锚点+限时紧迫感+赠品组合</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+  <div class="flow-chain">
+    <div class="flow-step">
+      <div class="fs-num">STEP 01</div>
+      <div class="fs-title">曝光认知</div>
+      <div class="fs-sub">KOL投放<br>信息流广告<br>自然流量</div>
+    </div>
+    <div class="flow-arrow">›</div>
+    <div class="flow-step highlight">
+      <div class="fs-num">STEP 02</div>
+      <div class="fs-title">兴趣种草</div>
+      <div class="fs-sub">小红书笔记<br>场景内容<br>搜索词渗透</div>
+    </div>
+    <div class="flow-arrow">›</div>
+    <div class="flow-step">
+      <div class="fs-num">STEP 03</div>
+      <div class="fs-title">主动搜索</div>
+      <div class="fs-sub">品牌词/品类词<br>搜索卡位承接<br>内容评估对比</div>
+    </div>
+    <div class="flow-arrow">›</div>
+    <div class="flow-step">
+      <div class="fs-num">STEP 04</div>
+      <div class="fs-title">转化成交</div>
+      <div class="fs-sub">直播促单<br>电商详情页<br>线下导购</div>
+    </div>
+    <div class="flow-arrow">›</div>
+    <div class="flow-step highlight">
+      <div class="fs-num">STEP 05</div>
+      <div class="fs-title">裂变复购</div>
+      <div class="fs-sub">晒单UGC<br>企微私域<br>老用户口碑</div>
+    </div>
+  </div>
 
-      <div class="subsection">
-        <div class="subsection-title">渠道范围与分工</div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr><th>渠道</th><th>核心角色</th><th>内容策略重点</th><th>奥普当前机会</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>抖音</td>
-                <td>种草+收割双驱动（自然流+千川投放）</td>
-                <td>短直联动，短视频引流直播间成交；千川加热达人内容和自有内容双轨并行</td>
-                <td>加强「卫生间改造」「浴室冬天不冷了」等场景词的搜索拦截布局</td>
-              </tr>
-              <tr>
-                <td>小红书</td>
-                <td>品牌种草主阵地，精装修用户核心触点</td>
-                <td>图文+短视频双格式；以家居博主/装修博主为主，强调真实生活感</td>
-                <td>「新房装修清单」「浴室改造避坑」「卫生间好物推荐」等高互动选题矩阵</td>
-              </tr>
-              <tr>
-                <td>B站</td>
-                <td>深度教育+跨圈种草</td>
-                <td>长视频硬核测评、安装教程、横向对比，建立深度信任</td>
-                <td>攻略类内容（「浴室电器全套购买指南」）对男性装修决策者影响力大</td>
-              </tr>
-              <tr>
-                <td>视频号</td>
-                <td>私域流量沉淀+微信生态扩散</td>
-                <td>结合微信生态，以真实用户案例、品牌故事为主，适合长线品牌内容</td>
-                <td>联动经销商/安装工程师发布内容，覆盖下沉市场决策人群</td>
-              </tr>
-              <tr>
-                <td>微信公众号/社群</td>
-                <td>深度用户维护+口碑放大</td>
-                <td>购买用户运营，激励UGC内容产出，打造真实买家秀生态</td>
-                <td>建立「奥普用户打卡」内容激励机制，UGC素材反哺抖音/小红书内容池</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <span class="badge badge-accent">曝光→种草 关键动作</span>
+      <h3>制造"被动发现"的内容</h3>
+      <ul>
+        <li>在抖音发现页/小红书feeds流布局内容，让用户在没有明确需求时被动看到</li>
+        <li>内容主题紧贴生活场景（"新房装修必看""卫生间改造案例"），触发情感共鸣</li>
+        <li>头部KOL大曝光破圈，建立品牌初始认知，腰部+素人堆量增加信任感</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="badge badge-teal">种草→搜索 关键动作</span>
+      <h3>提升"回搜率"是核心指标</h3>
+      <ul>
+        <li>用户看完笔记48h内再次搜索品牌词/品类词，说明种草真正打动了用户</li>
+        <li>内容要有"记忆钩子"：一个具体的产品亮点、一个强烈的视觉场景</li>
+        <li>内容中自然埋入搜索关键词，引导用户下一步搜索动作</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="badge badge-blue">搜索→转化 关键动作</span>
+      <h3>搜索结果页是最后一道关口</h3>
+      <ul>
+        <li>品牌词、品类词、场景词搜索结果前5条必须有奥普内容占位</li>
+        <li>搜索卡位内容要有评测对比、用户真实反馈，帮助用户完成决策</li>
+        <li>从小红书搜索到天猫/京东购买的外溢路径要顺畅，减少跳出</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="badge badge-amber">转化→裂变 关键动作</span>
+      <h3>把购买行为转化为内容资产</h3>
+      <ul>
+        <li>电商平台引导买家写评价/晒单，优质UGC回收入素材库</li>
+        <li>企微引导加入用户社群，推送装修技巧内容，提升复购和转介绍</li>
+        <li>优质UGC二次投放信息流，真实感内容的CTR远高于品牌自制内容</li>
+      </ul>
+    </div>
+  </div>
 
-    <!-- ─── S4 闭环链路 ─── -->
-    <section class="section" id="s4">
-      <div class="section-header">
-        <div class="section-num">SECTION 04</div>
-        <div>
-          <div class="section-title">品牌传播完整闭环链路</div>
-          <div class="section-title-sub">从曝光蓄水到口碑反哺的自我强化闭环</div>
-        </div>
-      </div>
+  <div class="insight insight-teal">
+    <strong>链路卡点提醒：</strong>最容易掉链子的地方是"种草到搜索"这一跳。用户在小红书被种草后，下一步是主动去搜索"奥普浴霸怎么样"，但如果这时候搜索结果里奥普的内容稀少、口碑不好，转化就会在这里断掉。品牌策划PM要同步布局种草内容和搜索卡位内容，两端都不能缺。
+  </div>
+</section>
 
-      <p>品牌策划PM的核心价值，在于将「内容生产→流量获取→用户教育→品牌心智建立→购买转化→口碑反哺」构建成一个自我强化的完整闭环，而非单次传播事件。</p>
+<!-- ── 04 内容策略 ── -->
+<section class="section">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2>内容策略四象限</h2>
+  </div>
+  <p class="section-intro">
+    奥普的内容策略按"认知层→场景层→产品层→转化层"四个维度分层布局，不同层次的内容承担不同的传播目标，并对应不同的渠道和达人类型。
+  </p>
 
-      <div class="flow" style="margin: 28px 0;">
-        <div class="flow-step">
-          <div class="flow-line"><div class="flow-dot"></div><div class="flow-connector"></div></div>
-          <div class="flow-card">
-            <div class="flow-card-title">【曝光蓄水】认知破圈</div>
-            <div class="flow-card-desc">达人种草内容自然传播 + 千川/信息流加热 + 小红书SEO布局 + 平台搜索广告拦截</div>
-            <span class="flow-card-tag">小红书 · 抖音 · B站</span>
-            <span class="flow-card-tag" style="background:var(--orange-pale);color:var(--orange)">PM职责：确定传播选题矩阵，匹配达人层级分配预算</span>
-          </div>
-        </div>
-        <div class="flow-step">
-          <div class="flow-line"><div class="flow-dot"></div><div class="flow-connector"></div></div>
-          <div class="flow-card">
-            <div class="flow-card-title">【内容说服】品类教育</div>
-            <div class="flow-card-desc">场景种草（建立使用联想）→ 技术背书（建立专业可信度）→ 用户证言（消除购买顾虑）</div>
-            <span class="flow-card-tag">抖音 · 小红书 · B站</span>
-            <span class="flow-card-tag" style="background:var(--orange-pale);color:var(--orange)">PM职责：制定内容策略框架，规范脚本骨架和话术体系</span>
-          </div>
-        </div>
-        <div class="flow-step">
-          <div class="flow-line"><div class="flow-dot"></div><div class="flow-connector"></div></div>
-          <div class="flow-card">
-            <div class="flow-card-title">【决策拦截】品牌优选</div>
-            <div class="flow-card-desc">搜索词布局（「浴霸哪个牌子好」「集成吊顶品牌推荐」）+ 竞品对比内容 + KOL深度测评</div>
-            <span class="flow-card-tag">小红书搜索 · 抖音搜索 · B站</span>
-            <span class="flow-card-tag" style="background:var(--orange-pale);color:var(--orange)">PM职责：建立高价值搜索词内容覆盖清单，定期监控内容份额</span>
-          </div>
-        </div>
-        <div class="flow-step">
-          <div class="flow-line"><div class="flow-dot"></div><div class="flow-connector"></div></div>
-          <div class="flow-card">
-            <div class="flow-card-title">【转化承接】成交收割</div>
-            <div class="flow-card-desc">直播间成交（日播+大促直播）+ 商品详情页 + 平台店铺搜索</div>
-            <span class="flow-card-tag">抖音直播 · 京东 · 天猫</span>
-            <span class="flow-card-tag" style="background:var(--orange-pale);color:var(--orange)">PM职责：节点传播方案与电商部门协同，确保流量峰值期承接在线</span>
-          </div>
-        </div>
-        <div class="flow-step">
-          <div class="flow-line"><div class="flow-dot"></div></div>
-          <div class="flow-card">
-            <div class="flow-card-title">【口碑放大】UGC回流</div>
-            <div class="flow-card-desc">已购用户「到手测评」「装修完工打卡」内容激励 → 回流种草池成为新素材原料</div>
-            <span class="flow-card-tag">小红书 · 抖音评论区 · 微信</span>
-            <span class="flow-card-tag" style="background:var(--orange-pale);color:var(--orange)">PM职责：建立UGC激励机制，优质买家内容二次加工为官方素材</span>
-          </div>
-        </div>
-      </div>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-accent-top" style="background: var(--accent)"></div>
+      <span class="badge badge-accent">认知层 · 品牌故事</span>
+      <h3>讲"我是谁" — 建立品牌厚度</h3>
+      <ul>
+        <li>1993年创始故事，中国浴霸先驱，专业安全定位</li>
+        <li>国潮联名（故宫宫廷文化）、跨界合作（华为、阿斯顿·马丁）</li>
+        <li>"浴霸不只是取暖""一站式空间解决方案"战略主张内容化</li>
+        <li>公益行动（对口扶贫）传递温暖感品牌调性</li>
+        <li>发布渠道：微信公众号、品牌官网、大事件节点抖音</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-accent-top" style="background: var(--blue)"></div>
+      <span class="badge badge-blue">场景层 · 生活方式</span>
+      <h3>讲"你的生活可以这样" — 建立场景欲望</h3>
+      <ul>
+        <li>卫浴间改造前后对比，高颜值效果图，激发改造欲望</li>
+        <li>厨房/阳台一站式空间解决方案，扩大品类认知边界</li>
+        <li>新房装修清单、小户型改造攻略，切入装修决策节点</li>
+        <li>生活仪式感叙事，不只是功能，是品质生活方式</li>
+        <li>发布渠道：小红书图文 + 抖音短视频，腰部KOL主力</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-accent-top" style="background: var(--teal)"></div>
+      <span class="badge badge-teal">产品层 · 功能卖点</span>
+      <h3>讲"为什么买我" — 建立购买理由</h3>
+      <ul>
+        <li>技术差异化：智能联控、安全专利（839项专利背书）</li>
+        <li>同价位竞品对比测评，专业角度建立信任</li>
+        <li>功能演示短视频：取暖速度、噪音测试等数据化呈现</li>
+        <li>行业标准制定者身份：浴霸国家标准制定组长单位</li>
+        <li>发布渠道：抖音功能视频 + 小红书评测笔记 + 电商详情页</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-accent-top" style="background: var(--amber)"></div>
+      <span class="badge badge-amber">转化层 · 促销活动</span>
+      <h3>讲"现在就买" — 建立行动紧迫感</h3>
+      <ul>
+        <li>大促节点（618/双11）直播高频自播，优惠信息高效传递</li>
+        <li>限时优惠+赠品组合，制造即时转化动作</li>
+        <li>直播间专属价格，营造稀缺感和立即决策的氛围</li>
+        <li>团购玩法：与巨量引擎等平台合作，大型团购直播标杆项目</li>
+        <li>发布渠道：抖音直播 + 视频号 + 天猫/京东大促活动页</li>
+      </ul>
+    </div>
+  </div>
 
-      <div class="subsection">
-        <div class="subsection-title">节点传播时间轴（标准新品/大促节点）</div>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-point">T - 8周 · 策略制定期</div>
-            <div class="timeline-content">确定核心传播卖点、目标人群、各渠道预算分配、达人名单初筛。<strong>输出传播策略文档，对齐产品/电商/PR各方。</strong></div>
+  <div style="background: var(--paper-card); border: 0.5px solid var(--rule); border-radius: 10px; padding: 20px; margin-top: 16px">
+    <div style="font-size: 12px; font-weight: 500; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px">内容配比建议（月度）</div>
+    <div style="display: flex; gap: 20px; flex-wrap: wrap">
+      <div style="flex: 1; min-width: 180px">
+        <div style="display: flex; gap: 4px; height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 10px">
+          <div style="width: 60%; background: var(--teal); border-radius: 4px"></div>
+          <div style="width: 30%; background: var(--blue); border-radius: 4px"></div>
+          <div style="width: 10%; background: var(--amber); border-radius: 4px"></div>
+        </div>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap">
+          <div style="display: flex; align-items: center; gap: 5px">
+            <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--teal)"></div>
+            <span style="font-size: 11px; color: var(--ink-mid)">干货/场景种草 60%</span>
           </div>
-          <div class="timeline-item">
-            <div class="timeline-point">T - 4周 · 内容预热期</div>
-            <div class="timeline-content">达人脚本共创、内容审核上线、小红书SEO内容铺量、品牌搜索词布局。<strong>跟进达人内容质量，启动千川加热测试素材CTR。</strong></div>
+          <div style="display: flex; align-items: center; gap: 5px">
+            <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--blue)"></div>
+            <span style="font-size: 11px; color: var(--ink-mid)">产品功能/促购 30%</span>
           </div>
-          <div class="timeline-item">
-            <div class="timeline-point">T - 2周 · 蓄水加速期</div>
-            <div class="timeline-content">加大千川投放预算、腰部达人密集发布、引流层素材集中上线。<strong>监控内容热度数据，实时调整素材跑量策略。</strong></div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-point">T - 0 · 大促爆发日</div>
-            <div class="timeline-content">官方账号直播+密集素材投流，头部达人内容同步发酵，全平台统一话题词聚合声量。<strong>实时盯盘，快速上线备用素材，处理突发舆情。</strong></div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-point">T + 1周 · 长尾复盘期</div>
-            <div class="timeline-content">汇总各渠道传播数据，提炼爆款内容公式，归档可复用素材模板。<strong>输出复盘报告，更新品牌内容资产库。</strong></div>
+          <div style="display: flex; align-items: center; gap: 5px">
+            <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--amber)"></div>
+            <span style="font-size: 11px; color: var(--ink-mid)">促销活动 10%</span>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- ─── S5 内容策略 ─── -->
-    <section class="section" id="s5">
-      <div class="section-header">
-        <div class="section-num">SECTION 05</div>
-        <div>
-          <div class="section-title">内容策略</div>
-          <div class="section-title-sub">全平台矩阵分发 · 达人合作全链路 · 三引擎迭代</div>
-        </div>
+      <div style="flex: 2; min-width: 220px">
+        <p style="font-size: 12px; color: var(--ink-mid); line-height: 1.7">这个配比能保证账号权重持续积累，不会让用户感觉"全是广告"，同时60%的种草内容也能持续为搜索词库输入新的长尾流量。大促期间可适当提高促销内容比例至20-30%。</p>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div class="subsection">
-        <div class="subsection-title">全平台内容分发策略 — 一品牌多面孔矩阵</div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr><th>账号/平台</th><th>内容定位</th><th>核心驱动力</th><th>差异化内容资产</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>奥普AUPU抖音官号</td>
-                <td>生活方式品牌账号，「卫生间品质生活」代言人</td>
-                <td>场景情感共鸣 + 价格促销钩子</td>
-                <td>「冬天再也不怕洗澡冷」「装修后悔系列」真实痛点叙事体系</td>
-              </tr>
-              <tr>
-                <td>奥普官方旗舰店抖音</td>
-                <td>产品力说服账号，驱动直播间成交</td>
-                <td>技术参数可视化 + 竞品对比 + 限时促销</td>
-                <td>「功率实测横评」「30天使用反馈」「安装工程师讲解」等信任背书内容</td>
-              </tr>
-              <tr>
-                <td>小红书奥普账号</td>
-                <td>精致生活种草账号，俘获装修期女性用户</td>
-                <td>颜值+品质+真实生活感</td>
-                <td>「我家卫生间改造全记录」「入住一年真实体验」「浴室好物清单」图文内容</td>
-              </tr>
-              <tr>
-                <td>B站奥普账号</td>
-                <td>专业评测账号，影响男性购买决策者</td>
-                <td>数据对比 + 技术深度 + 安装教程</td>
-                <td>「浴霸全品类横评」「集成吊顶安装全流程」「卫浴品牌年度盘点」</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+<!-- ── 05 KFS策略 ── -->
+<section class="section" id="kfs">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <h2>小红书 KFS 打法设计</h2>
+  </div>
+  <p class="section-intro">
+    KFS（KOL内容种草 + Feeds信息流 + Search搜索广告）是奥普在小红书平台的核心投放策略。本质是"好内容精准放大"——内容是1，F和S是后面的0，没有好内容，投放效率再高也是烧冤枉钱。
+  </p>
+
+  <div class="card-grid card-grid-3" style="margin-bottom: 24px">
+    <div class="card">
+      <div style="font-size: 26px; font-weight: 500; color: var(--teal); margin-bottom: 4px">K</div>
+      <div style="font-size: 11px; color: var(--ink-muted); margin-bottom: 10px">KOL · 内容种草</div>
+      <h3>制造信任感，建立认知</h3>
+      <ul>
+        <li>头部博主：品牌节点破圈曝光，新品发布用</li>
+        <li>腰部垂类：家装/卫浴博主，精准渗透，性价比最高</li>
+        <li>KOC素人：真实口碑批量铺量，覆盖长尾搜索词</li>
+        <li>先小规模测试，爆文跑出来再规模化放量</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div style="font-size: 26px; font-weight: 500; color: var(--blue); margin-bottom: 4px">F</div>
+      <div style="font-size: 11px; color: var(--ink-muted); margin-bottom: 10px">Feeds · 信息流投放</div>
+      <h3>放大好内容，扩大声量</h3>
+      <ul>
+        <li>只投自然互动数据好的笔记，不是全部内容都投</li>
+        <li>精准定向：装修中/新婚/换新房人群包</li>
+        <li>用CTR、CPE每日筛选值得继续放量的素材</li>
+        <li>把跑出来的KOL笔记二次投放，延长内容生命周期</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div style="font-size: 26px; font-weight: 500; color: var(--amber); margin-bottom: 4px">S</div>
+      <div style="font-size: 11px; color: var(--ink-muted); margin-bottom: 10px">Search · 搜索卡位</div>
+      <h3>守住决策关口，拦截转化</h3>
+      <ul>
+        <li>品牌词守住自家流量，防竞品截流</li>
+        <li>品类词抢品类入口（"浴霸哪个牌子好"）</li>
+        <li>场景词渗透装修决策（"卫生间改造"）</li>
+        <li>大促前重点加大S投入，精准流量转化率最高</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="font-size: 12px; font-weight: 500; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px">三阶段预算配比策略</div>
+
+  <div class="phase-block">
+    <div class="phase-header">
+      <div class="phase-dot" style="background: var(--teal)"></div>
+      <h4>阶段一：冷启动期（0-3个月）</h4>
+      <span class="phase-ratio">K : F : S = 7 : 3 : 0</span>
+    </div>
+    <div style="padding: 8px 20px">
+      <div class="ratio-bar">
+        <div class="rb" style="width:70%; background: var(--teal)"></div>
+        <div class="rb" style="width:28%; background: var(--blue)"></div>
+        <div class="rb" style="width:2%; background: var(--rule)"></div>
       </div>
-
-      <!-- 达人合作 -->
-      <div class="subsection" id="s5b">
-        <div class="subsection-title">达人合作全链路策略</div>
-        <p>达人合作是品牌策划PM工作量最大、最容易失控的模块。标准化全链路管理是提升效率的核心：</p>
-        <div class="table-wrap" style="margin-top:14px">
-          <table>
-            <thead>
-              <tr><th>链路环节</th><th>关键动作</th><th>质控要点</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>达人筛选</td>
-                <td>蝉妈妈/飞瓜数据筛选 → 人工评审内容风格 → 评论区真实度抽查 → 历史合作品牌画像匹配</td>
-                <td>优先选「粉丝真实互动率&gt;3%」+「内容风格与奥普调性契合」+「粉丝中装修/家居兴趣占比高」的达人</td>
-              </tr>
-              <tr>
-                <td>脚本共创</td>
-                <td>品牌方提供「卖点清单+禁止表述」，达人基于自身风格自由发挥；PM审核脚本重点看「卖点是否自然融入」</td>
-                <td>不要强求达人逐字照本宣科；允许达人用自己的语言表达，保持内容真实感是转化率的核心变量</td>
-              </tr>
-              <tr>
-                <td>拍摄跟进</td>
-                <td>提前确认拍摄时间、场景道具、产品安装条件；重要合作派品牌方人员现场跟进</td>
-                <td>浴室电器需要真实安装场景，避免「道具摆拍」导致评论区质疑内容真实性</td>
-              </tr>
-              <tr>
-                <td>投放把控</td>
-                <td>达人内容上线后24h监控自然流数据，CTR&gt;3%启动千川加热；自然流数据优秀可追加预算做信息流二次扩量</td>
-                <td>千川加热达人内容时注意「商业化标注」合规要求，避免违规导致账号扣分</td>
-              </tr>
-              <tr>
-                <td>数据复盘</td>
-                <td>记录每条达人内容：播放量/完播率/互动率/带来的搜索增量/直接转化GMV，建立可量化的达人合作ROI数据库</td>
-                <td>复盘周期为合作完成后7天+30天两次，30天数据更能反映内容对品牌搜索和长尾转化的真实贡献</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- 三引擎 -->
-      <div class="subsection" id="s5c">
-        <div class="subsection-title">内容迭代策略 — 三引擎驱动</div>
-        <div class="grid-2" style="gap:16px;margin-top:16px">
-          <div class="card card-orange" style="grid-column:1/-1">
-            <div class="card-title">🔥 驱动引擎一：爆款内容出现</div>
-            <p>一旦某条内容出现「播放量/互动率显著高于均值」（通常为账号平均值3倍以上），立即进行拆解：是选题赢了，还是开头钩子赢了，还是特定卖点点燃了共鸣？将爆款骨架提炼为可复用模板，在2周内快速产出3~5条变体测试，验证是「偶发性爆款」还是「可持续跑量骨架」。</p>
-          </div>
-          <div class="card">
-            <div class="card-title">🚀 驱动引擎二：产品线迭代</div>
-            <p>新品上市倒逼内容策略整体升级。以奥普为例：若推出「AI智能温控浴霸」，内容策略需从「取暖功能」升级为「智慧家居生活体验」，配套调整达人选择，重新校准各平台内容侧重。产品上市前2~3周应完成配套素材库更新。</p>
-          </div>
-          <div class="card">
-            <div class="card-title">🔍 驱动引擎三：竞品与行业动态</div>
-            <p>每月对主要竞品（华帝、欧普、雷士、鸿雁等）进行一次内容拆解：他们在跑什么选题？哪类达人合作频率最高？竞品突然在小红书密集铺量往往预示着大促准备或新品发布，品牌PM需提前预判并制定差异化应对。</p>
-          </div>
-        </div>
-        <div class="tip-box" style="margin-top:16px">💡 三个引擎不是并列关系——产品迭代决定内容方向，爆款出现决定内容原料，竞品动态决定内容节奏。</div>
-      </div>
-    </section>
-
-    <!-- ─── S6 内容资产 ─── -->
-    <section class="section" id="s6">
-      <div class="section-header">
-        <div class="section-num">SECTION 06</div>
-        <div>
-          <div class="section-title">内容资产沉淀与素材迭代策略</div>
-          <div class="section-title-sub">三层资产体系 · SOP化素材结构 · 精力分配模型</div>
-        </div>
-      </div>
-
-      <div class="subsection">
-        <div class="subsection-title">品牌内容资产体系建设</div>
-        <p>「规范传播话术、视觉、视频脚本体系」是JD中明确要求，建议建立以下三层内容资产体系：</p>
-        <div class="table-wrap" style="margin-top:14px">
-          <table>
-            <thead>
-              <tr><th>资产层级</th><th>内容构成</th><th>更新频率</th><th>使用场景</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>第一层<br>脚本骨架库</td>
-                <td>经过数据验证的高转化内容骨架（痛点型/技术型/场景型/价格型），每套骨架包含「叙事逻辑+信息排序+CTA方式」</td>
-                <td>季度更新1~2套新骨架</td>
-                <td>达人脚本共创参考底稿；新员工内容创作培训材料</td>
-              </tr>
-              <tr>
-                <td>第二层<br>话术卖点库</td>
-                <td>奥普核心卖点的标准化表述（不同平台/不同人群/不同场景各一套）；禁用表述和合规红线清单</td>
-                <td>新品上市时同步更新</td>
-                <td>达人brief制作；直播话术编写；广告素材文案</td>
-              </tr>
-              <tr>
-                <td>第三层<br>素材原料库</td>
-                <td>历史优质内容截图/片段；用户UGC真实评价；产品使用场景图片库；品牌视觉规范文件</td>
-                <td>月度归档补充</td>
-                <td>日常内容创作取材；达人参考案例展示；节点快速出图</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="subsection">
-        <div class="subsection-title">素材迭代SOP — 三层结构</div>
-        <div class="sub2-title">第一层：脚本骨架层（固定周期替换）</div>
-        <p>决定素材的核心叙事逻辑。浴室电器品类主力骨架：痛点激活→产品解决方案→效果呈现→社会认同→CTA。骨架不轻易更换，仅在数据出现系统性衰退（CTR连续下降超过30%）时考虑整体替换。</p>
-
-        <div class="sub2-title">第二层：可变槽位层（高频替换）</div>
-        <p>在固定骨架内替换差异化元素，产生内容多样性而不损失系统学习数据：</p>
-        <ul class="bullet-list">
-          <li>开场钩子：「冬天洗澡有多冷」场景 / 「浴霸选错了后悔10年」警示 / 「测了10款浴霸只推这一款」测评</li>
-          <li>核心卖点展示：取暖速度/换气效率/防水性能/节能数据，根据季节和目标人群轮换</li>
-          <li>社会证明元素：销量数据/用户好评截图/专业机构认证/工程师推荐</li>
-          <li>促销信息：当期价格/满减活动/国补金额/限时赠品，每场直播前必须同步更新</li>
+    </div>
+    <div class="phase-body">
+      <div class="phase-col">
+        <div class="phase-col-title">核心任务</div>
+        <ul>
+          <li>铺5-10篇不同角度笔记，测试哪个内容方向用户最爱看</li>
+          <li>确定核心关键词库，提前做笔记埋词布局</li>
+          <li>积累基础笔记量，让搜索结果有内容可显示</li>
+          <li>F只做小预算试水测试内容，不大规模放量</li>
         </ul>
-
-        <div class="sub2-title">第三层：迭代周期层（数据驱动节奏）</div>
-        <p>收割层素材（25~40s强促销）：每5~7天AB测试替换一次开场钩子；种草层素材（45~90s）评估周期延长至10~14天；同一骨架跑满3~4周后启动整体母版替换，防止频控衰退。</p>
       </div>
+      <div class="phase-col">
+        <div class="phase-col-title">奥普重点方向</div>
+        <ul>
+          <li>把"卫生间装修攻略""浴霸选购避坑"这类长尾内容先铺起来</li>
+          <li>这类内容有持续搜索流量，比早期砸头部KOL性价比高得多</li>
+          <li>S搜索量不够时投了也浪费，等内容基建完成再开搜索</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-      <div class="subsection">
-        <div class="subsection-title">精力分配模型</div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr><th>精力占比</th><th>工作内容</th><th>产出目标</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>55% 日常内容执行</td>
-                <td>达人内容跟进、账号日常内容排期发布、素材审核、数据监控</td>
-                <td>保障各平台稳定内容输出，维持账号活跃度与自然流量基本盘</td>
-              </tr>
-              <tr>
-                <td>25% 策略与规划</td>
-                <td>月度/季度内容策略制定、节点传播方案策划、达人资源开拓与关系维护</td>
-                <td>前瞻性布局，确保资源在关键节点充分就位，不出现临时抱佛脚</td>
-              </tr>
-              <tr>
-                <td>15% 内容资产沉淀</td>
-                <td>爆款内容拆解、话术库更新、脚本骨架归档、竞品内容调研</td>
-                <td>建立可持续复用的内容资产，减少对个人经验的依赖</td>
-              </tr>
-              <tr>
-                <td>5% 跨部门协同</td>
-                <td>与产品/电商/PR/设计团队对齐传播节点和内容方向</td>
-                <td>避免各部门信息孤岛，确保品牌声音在各渠道统一一致</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  <div class="phase-block">
+    <div class="phase-header">
+      <div class="phase-dot" style="background: var(--blue)"></div>
+      <h4>阶段二：成长放量期（3-6个月）</h4>
+      <span class="phase-ratio">K : F : S = 3 : 4 : 3</span>
+    </div>
+    <div style="padding: 8px 20px">
+      <div class="ratio-bar">
+        <div class="rb" style="width:30%; background: var(--teal)"></div>
+        <div class="rb" style="width:40%; background: var(--blue)"></div>
+        <div class="rb" style="width:30%; background: var(--amber)"></div>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-col">
+        <div class="phase-col-title">核心任务</div>
+        <ul>
+          <li>找出冷启动期爆文，复制内容方向规模化出更多笔记</li>
+          <li>F重点放量好素材，扩大精准人群覆盖</li>
+          <li>S开始卡品类词+场景词，承接被种草后主动搜索的用户</li>
+        </ul>
+      </div>
+      <div class="phase-col">
+        <div class="phase-col-title">F和S协同逻辑</div>
+        <ul>
+          <li>F做到曝光认知：今天用户刷到奥普浴霸</li>
+          <li>S做到精准收割：明天用户搜"浴霸推荐"，奥普排在前面</li>
+          <li>两者必须协同，F种草后S要承接，不能各自为战</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-        <div class="highlight-box" style="margin-top:20px">
-          <p><strong>SOP化保证内容下限，策略迭代争取内容上限，资产沉淀降低长期边际成本</strong>——三者缺一不可，也构成了品牌策划PM的核心不可替代性。否则3个月后团队只会填槽，不会创造，品牌声量将逐步被动态迭代的竞品超越。</p>
+  <div class="phase-block">
+    <div class="phase-header">
+      <div class="phase-dot" style="background: var(--amber)"></div>
+      <h4>阶段三：维稳/大促期（持续运营）</h4>
+      <span class="phase-ratio">K : F : S = 2 : 4 : 4</span>
+    </div>
+    <div style="padding: 8px 20px">
+      <div class="ratio-bar">
+        <div class="rb" style="width:20%; background: var(--teal)"></div>
+        <div class="rb" style="width:40%; background: var(--blue)"></div>
+        <div class="rb" style="width:40%; background: var(--amber)"></div>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-col">
+        <div class="phase-col-title">核心任务</div>
+        <ul>
+          <li>内容基建已有，K只做新品/节点补充，不大规模投</li>
+          <li>大促期搜索流量激增，S预算比例加大到40%</li>
+          <li>"做功课"用户增多，精准流量转化率最高，要守住</li>
+        </ul>
+      </div>
+      <div class="phase-col">
+        <div class="phase-col-title">大促前准备动作</div>
+        <ul>
+          <li>大促前4周提前布局品类词+竞品词的搜索卡位</li>
+          <li>最强笔记素材（高收藏率的）提前复投信息流</li>
+          <li>大促节点内容提前2周发，等待自然爬升后再加投</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div style="font-size: 12px; font-weight: 500; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.06em; margin: 24px 0 14px">搜索词分层布局（S策略详解）</div>
+  <div class="kw-section">
+    <div class="kw-group">
+      <span class="badge badge-teal">品牌词</span>
+      <h4 style="font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 8px">守住自家地盘</h4>
+      <div class="kw-tags">
+        <span class="kw-tag">奥普浴霸</span>
+        <span class="kw-tag">AUPU</span>
+        <span class="kw-tag">奥普集成吊顶</span>
+        <span class="kw-tag">奥普好不好</span>
+        <span class="kw-tag">奥普值不值得买</span>
+      </div>
+    </div>
+    <div class="kw-group">
+      <span class="badge badge-blue">品类词</span>
+      <h4 style="font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 8px">抢品类入口</h4>
+      <div class="kw-tags">
+        <span class="kw-tag">浴霸哪个牌子好</span>
+        <span class="kw-tag">集成吊顶推荐</span>
+        <span class="kw-tag">浴霸选购指南</span>
+        <span class="kw-tag">凉霸推荐</span>
+      </div>
+    </div>
+    <div class="kw-group">
+      <span class="badge badge-amber">场景词</span>
+      <h4 style="font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 8px">渗透装修决策</h4>
+      <div class="kw-tags">
+        <span class="kw-tag">卫生间改造</span>
+        <span class="kw-tag">浴室装修攻略</span>
+        <span class="kw-tag">新房装修清单</span>
+        <span class="kw-tag">小卫生间设计</span>
+      </div>
+    </div>
+    <div class="kw-group">
+      <span class="badge badge-purple">人群词</span>
+      <h4 style="font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 8px">找到精准目标人</h4>
+      <div class="kw-tags">
+        <span class="kw-tag">新婚装修</span>
+        <span class="kw-tag">二手房改造</span>
+        <span class="kw-tag">老房翻新</span>
+        <span class="kw-tag">装修小白必看</span>
+      </div>
+    </div>
+    <div class="kw-group">
+      <span class="badge badge-accent">痛点词</span>
+      <h4 style="font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 8px">承接明确需求</h4>
+      <div class="kw-tags">
+        <span class="kw-tag">浴室冬天太冷</span>
+        <span class="kw-tag">浴霸噪音大</span>
+        <span class="kw-tag">浴霸安全吗</span>
+        <span class="kw-tag">浴霸使用寿命</span>
+      </div>
+    </div>
+    <div class="kw-group">
+      <span class="badge badge-gray">竞品词</span>
+      <h4 style="font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 8px">截流竞品用户</h4>
+      <div class="kw-tags">
+        <span class="kw-tag">浴霸品牌对比</span>
+        <span class="kw-tag">奥普vs松下</span>
+        <span class="kw-tag">浴霸哪个性价比高</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 06 抖音打法 ── -->
+<section class="section" id="douyin">
+  <div class="section-header">
+    <span class="section-num">06</span>
+    <h2>抖音平台运营打法设计</h2>
+  </div>
+  <p class="section-intro">
+    抖音是奥普最重要的转化主阵地，也是日常运营投入最重的平台。不同于小红书的"搜索种草"逻辑，抖音靠的是"流量主动找人"——算法把内容推给合适的用户，短视频建立认知，直播间完成转化。两者缺一不可，必须协同运营。
+  </p>
+
+  <!-- 核心打法框架 -->
+  <div style="font-size:12px;font-weight:500;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">抖音运营三件套：短视频 × 自播 × 达人</div>
+  <div class="card-grid card-grid-3" style="margin-bottom:24px">
+    <div class="card">
+      <div class="card-accent-top" style="background:var(--accent)"></div>
+      <span class="badge badge-accent">短视频内容</span>
+      <h3>建立认知，驱动兴趣</h3>
+      <ul>
+        <li>是直播间的"导流入口"，短视频质量直接影响直播间流量</li>
+        <li>每天至少发1-3条，保证账号权重和内容基盘</li>
+        <li>内容要有"钩子"：前3秒必须抓住用户，否则直接划走</li>
+        <li>短视频不是广告片，要有真实感、场景感、人的温度</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-accent-top" style="background:var(--teal)"></div>
+      <span class="badge badge-teal">店铺自播</span>
+      <h3>每日开播，稳定转化</h3>
+      <div style="font-size:11px;color:var(--teal);font-weight:500;margin-bottom:8px">★ 抖音运营核心动作</div>
+      <ul>
+        <li>日播是基本功，每天稳定开播6-12小时，培养算法权重</li>
+        <li>直播间人货场设计：背景、产品陈列、主播话术缺一不可</li>
+        <li>自然流量+付费流量（千川）双驱动，不能只靠一端</li>
+        <li>大促节点延长播出时长，早中晚多场次覆盖</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-accent-top" style="background:var(--blue)"></div>
+      <span class="badge badge-blue">达人合播</span>
+      <h3>节点爆发，突破流量上限</h3>
+      <ul>
+        <li>自播触达的是品牌已有受众，达人合播是破圈的核心手段</li>
+        <li>家装/设计/生活方式头腰部达人，精准覆盖装修人群</li>
+        <li>选品要和达人人设匹配，不能"乱入"，会伤害双方信任感</li>
+        <li>大促节点（618/双11）提前8周锁定资源</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 短视频内容策略 -->
+  <div style="font-size:12px;font-weight:500;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">短视频内容策略详解</div>
+  <div style="background:var(--paper-card);border:.5px solid var(--rule);border-radius:10px;overflow:hidden;margin-bottom:20px">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0">
+      <div style="padding:16px 18px;border-right:.5px solid var(--rule)">
+        <span class="badge badge-teal">类型1 场景种草</span>
+        <div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:6px">卫浴空间改造效果展示</div>
+        <ul class="clist">
+          <li>装修前后对比，视觉冲击感强，完播率高</li>
+          <li>真实家庭场景拍摄，避免过于精致失去真实感</li>
+          <li>配合文案埋"卫生间改造""浴室装修"等搜索词</li>
+          <li>适合投DOU+放量，爆文标准：完播率&gt;40%</li>
+        </ul>
+      </div>
+      <div style="padding:16px 18px;border-right:.5px solid var(--rule)">
+        <span class="badge badge-blue">类型2 功能演示</span>
+        <div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:6px">产品技术卖点可视化</div>
+        <ul class="clist">
+          <li>取暖速度测试、噪音对比测试，数据化让人信服</li>
+          <li>智能联控演示，手机控制浴霸，科技感强</li>
+          <li>30-60秒节奏感强，不拖沓，突出一个核心卖点</li>
+          <li>适合投到"购物"兴趣人群，直接承接购买意向</li>
+        </ul>
+      </div>
+      <div style="padding:16px 18px">
+        <span class="badge badge-amber">类型3 干货攻略</span>
+        <div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:6px">装修知识输出建立信任</div>
+        <ul class="clist">
+          <li>"装修必看""避坑指南"类标题，自然搜索流量好</li>
+          <li>品牌专业度背书，用户会主动收藏转发</li>
+          <li>评论区引导互动（"你家卫生间多大？"），提升权重</li>
+          <li>适合导流到直播间，"点击头像进直播间了解更多"</li>
+        </ul>
+      </div>
+    </div>
+    <div style="padding:12px 18px;background:var(--paper-warm);border-top:.5px solid var(--rule)">
+      <div style="font-size:12px;color:var(--ink-mid);line-height:1.7">
+        <strong style="color:var(--ink)">短视频发布节奏建议：</strong>场景种草内容（50%）+ 功能演示（30%）+ 干货攻略（20%）。大促前两周可临时提高促销信息内容比例，但平时不要超过10%，过多促销内容会拉低账号权重。
+      </div>
+    </div>
+  </div>
+
+  <!-- 前3秒黄金法则 -->
+  <div style="font-size:12px;font-weight:500;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">前3秒黄金法则 — 决定用户留还是走</div>
+  <div class="card-grid card-grid-4" style="margin-bottom:24px">
+    <div class="card">
+      <div style="font-size:22px;font-weight:600;color:var(--teal);margin-bottom:6px">悬念型</div>
+      <p style="font-size:12px;color:var(--ink-mid);line-height:1.6">"99%的人装修都会在浴霸上踩这个坑" — 制造好奇心，用户想知道答案所以留下来</p>
+    </div>
+    <div class="card">
+      <div style="font-size:22px;font-weight:600;color:var(--blue);margin-bottom:6px">对比型</div>
+      <p style="font-size:12px;color:var(--ink-mid);line-height:1.6">"同一个卫生间，装了奥普之后" — 强烈的视觉反差，前后对比最能吸引完整观看</p>
+    </div>
+    <div class="card">
+      <div style="font-size:22px;font-weight:600;color:var(--amber);margin-bottom:6px">共鸣型</div>
+      <p style="font-size:12px;color:var(--ink-mid);line-height:1.6">"冬天洗澡冻成狗的举手" — 触发用户自身痛点，感觉"说的就是我"立刻停下来看</p>
+    </div>
+    <div class="card">
+      <div style="font-size:22px;font-weight:600;color:var(--accent);margin-bottom:6px">价值型</div>
+      <p style="font-size:12px;color:var(--ink-mid);line-height:1.6">"装修避坑清单，建议收藏" — 告诉用户这条视频有实用价值，刺激收藏和转发</p>
+    </div>
+  </div>
+
+  <!-- 自播运营体系 -->
+  <div style="font-size:12px;font-weight:500;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">店铺自播运营体系</div>
+  <div class="card-grid card-grid-2" style="margin-bottom:20px">
+    <div class="card">
+      <span class="badge badge-teal">直播间"人货场"设计</span>
+      <h3>三个维度都要到位</h3>
+      <ul>
+        <li><strong style="color:var(--ink)">人（主播）：</strong>专业感+亲和力，能清晰讲产品卖点，有处理突发状况的应变能力；至少2名主播轮播保证时长</li>
+        <li><strong style="color:var(--ink)">货（选品）：</strong>每场直播有1-2个引流款（低价/高性价比），1-2个利润款（主推），组合吸引不同需求用户</li>
+        <li><strong style="color:var(--ink)">场（场景）：</strong>背景呈现真实卫浴场景，产品上墙展示，视觉专业有说服力；灯光要亮，产品颜色还原准确</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="badge badge-blue">直播间流量运营</span>
+      <h3>自然流量 + 付费流量协同</h3>
+      <ul>
+        <li><strong style="color:var(--ink)">自然流量来源：</strong>短视频导流（每条视频末尾引导进直播间）+ 粉丝推送 + 搜索流量</li>
+        <li><strong style="color:var(--ink)">千川投放：</strong>直播间商品推广、达人相似人群定向、行为兴趣定向（装修/家居/家装设计）</li>
+        <li><strong style="color:var(--ink)">投放时机：</strong>直播间在线人数低谷时加大千川投放拉人，不要在低谷期关播</li>
+        <li><strong style="color:var(--ink)">ROI目标：</strong>日播期ROI≥2为健康，大促期可容忍ROI≥1.5冲GMV</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 直播间话术结构 -->
+  <div style="background:var(--paper-card);border:.5px solid var(--rule);border-radius:10px;overflow:hidden;margin-bottom:20px">
+    <div style="padding:14px 20px;background:var(--paper-warm);border-bottom:.5px solid var(--rule)">
+      <div style="font-size:12px;font-weight:500;color:var(--ink)">直播间话术结构 — 一个完整的产品讲解节奏</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0">
+      <div style="padding:14px 16px;border-right:.5px solid var(--rule);text-align:center">
+        <div style="font-size:10px;font-weight:500;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">第1步</div>
+        <div style="font-size:13px;font-weight:500;color:var(--teal);margin-bottom:6px">痛点共鸣</div>
+        <div style="font-size:11px;color:var(--ink-mid);line-height:1.5">"冬天卫生间冷、开电暖器费电又危险，有没有更好的解决方式？"</div>
+      </div>
+      <div style="padding:14px 16px;border-right:.5px solid var(--rule);text-align:center">
+        <div style="font-size:10px;font-weight:500;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">第2步</div>
+        <div style="font-size:13px;font-weight:500;color:var(--blue);margin-bottom:6px">产品亮相</div>
+        <div style="font-size:11px;color:var(--ink-mid);line-height:1.5">展示产品实物，介绍核心卖点（1个，不要说5个）</div>
+      </div>
+      <div style="padding:14px 16px;border-right:.5px solid var(--rule);text-align:center">
+        <div style="font-size:10px;font-weight:500;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">第3步</div>
+        <div style="font-size:13px;font-weight:500;color:var(--amber);margin-bottom:6px">信任建立</div>
+        <div style="font-size:11px;color:var(--ink-mid);line-height:1.5">1993年品牌历史、专利数量、用户口碑截图/视频</div>
+      </div>
+      <div style="padding:14px 16px;border-right:.5px solid var(--rule);text-align:center">
+        <div style="font-size:10px;font-weight:500;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">第4步</div>
+        <div style="font-size:13px;font-weight:500;color:var(--accent);margin-bottom:6px">价格锚点</div>
+        <div style="font-size:11px;color:var(--ink-mid);line-height:1.5">先报市场价/历史价，再给直播间专属价，制造"占到便宜"感</div>
+      </div>
+      <div style="padding:14px 16px;text-align:center">
+        <div style="font-size:10px;font-weight:500;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">第5步</div>
+        <div style="font-size:13px;font-weight:500;color:var(--purple);margin-bottom:6px">紧迫促单</div>
+        <div style="font-size:11px;color:var(--ink-mid);line-height:1.5">"库存只有最后XX件""今天直播结束价格就恢复"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 千川投放策略 -->
+  <div style="font-size:12px;font-weight:500;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">千川投放策略（付费流量）</div>
+  <div class="card-grid card-grid-2" style="margin-bottom:20px">
+    <div class="card">
+      <span class="badge badge-amber">短视频千川投放</span>
+      <h3>用好内容撬动更大曝光</h3>
+      <ul>
+        <li><strong style="color:var(--ink)">投什么：</strong>自然播放量超过5000、互动率高于3%的视频，才值得投千川放量</li>
+        <li><strong style="color:var(--ink)">投给谁：</strong>相似达人粉丝（家装设计类）+ 行为兴趣（浏览过装修/家居内容）+ 品牌粉丝人群包</li>
+        <li><strong style="color:var(--ink)">投放目标：</strong>短视频不直接追求转化，目标是点击率和主页访问，引导关注账号或进直播间</li>
+        <li><strong style="color:var(--ink)">健康指标：</strong>CPM（千次曝光成本）控制在合理区间，点击率&gt;2.5%为优质素材</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="badge badge-accent">直播间千川投放</span>
+      <h3>精准拉人进直播间转化</h3>
+      <ul>
+        <li><strong style="color:var(--ink)">投放时机：</strong>直播间在线人数低于30人时开启，用付费流量维持直播间热度</li>
+        <li><strong style="color:var(--ink)">投放目标：</strong>直接选"直播间购物"目标，算法会找最可能购买的用户推</li>
+        <li><strong style="color:var(--ink)">预算分配：</strong>日播期日预算控制在合理范围，大促期可提升3-5倍</li>
+        <li><strong style="color:var(--ink)">跑量核心：</strong>千川跑量好不好，70%取决于直播间本身的承接转化能力，投放只是加速器</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 抖音内容日历节奏 -->
+  <div style="font-size:12px;font-weight:500;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">抖音日常运营节奏参考</div>
+  <div style="background:var(--paper-card);border:.5px solid var(--rule);border-radius:10px;overflow:hidden;margin-bottom:20px">
+    <div style="display:grid;grid-template-columns:100px 1fr;gap:0">
+      <div style="background:var(--paper-warm);padding:14px 16px;border-bottom:.5px solid var(--rule);border-right:.5px solid var(--rule);font-size:11px;font-weight:500;color:var(--ink-muted);display:flex;align-items:center">每日</div>
+      <div style="padding:12px 18px;border-bottom:.5px solid var(--rule)">
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--ink-mid)"><span style="color:var(--teal);font-weight:500">早9-11点：</span>发布前一天拍好的短视频（场景种草或干货类），这个时间段用户刷抖音活跃度高</div>
+          <div style="font-size:12px;color:var(--ink-mid)"><span style="color:var(--blue);font-weight:500">下午14-22点：</span>直播间开播，主力时段，主播保持稳定讲解节奏，千川持续跑量</div>
+          <div style="font-size:12px;color:var(--ink-mid)"><span style="color:var(--amber);font-weight:500">晚间复盘：</span>查看当日直播数据（在线峰值/GPM/转化率），记录异常，调整明日策略</div>
         </div>
       </div>
-    </section>
+      <div style="background:var(--paper-warm);padding:14px 16px;border-bottom:.5px solid var(--rule);border-right:.5px solid var(--rule);font-size:11px;font-weight:500;color:var(--ink-muted);display:flex;align-items:center">每周</div>
+      <div style="padding:12px 18px;border-bottom:.5px solid var(--rule)">
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--ink-mid)"><span style="color:var(--teal);font-weight:500">周一：</span>上周直播数据复盘，找出GPM最高的时间段和产品，本周重点推</div>
+          <div style="font-size:12px;color:var(--ink-mid)"><span style="color:var(--blue);font-weight:500">周三：</span>短视频内容拍摄（批量拍，效率高），为下一周准备素材</div>
+          <div style="font-size:12px;color:var(--ink-mid)"><span style="color:var(--amber);font-weight:500">周五/六：</span>流量高峰，直播时长延长，主播状态要最好，千川预算可适当加大</div>
+        </div>
+      </div>
+      <div style="background:var(--paper-warm);padding:14px 16px;border-right:.5px solid var(--rule);font-size:11px;font-weight:500;color:var(--ink-muted);display:flex;align-items:center">大促期</div>
+      <div style="padding:12px 18px">
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;color:var(--ink-mid)"><span style="color:var(--accent);font-weight:500">提前2周：</span>预热短视频密度加倍，每天3-5条，提前造势引导用户关注</div>
+          <div style="font-size:12px;color:var(--ink-mid)"><span style="color:var(--accent);font-weight:500">大促当天：</span>全天候直播，早中晚3个黄金档（8-11点/12-14点/19-23点）加大千川</div>
+          <div style="font-size:12px;color:var(--ink-mid)"><span style="color:var(--accent);font-weight:500">大促后3天：</span>继续跟进，用晒单UGC内容维持热度，私信关注过直播间的用户做二次转化</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  </div><!-- /content-area -->
+  <!-- 核心数据指标 -->
+  <div style="font-size:12px;font-weight:500;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">抖音核心监控指标</div>
+  <div class="kpi-grid" style="margin-bottom:20px">
+    <div class="kpi-card">
+      <div class="kpi-label">短视频完播率</div>
+      <div class="kpi-metric">&gt; 40%</div>
+      <div class="kpi-note">低于30%说明前3秒没抓住用户，优先改封面和开场</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">直播间 GPM</div>
+      <div class="kpi-metric">千次曝光成交额</div>
+      <div class="kpi-note">GPM是判断直播间承接能力的核心指标，低GPM靠投流也没用</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">直播间停留时长</div>
+      <div class="kpi-metric">&gt; 90秒</div>
+      <div class="kpi-note">停留时长短说明内容吸引力不足或产品讲解太无聊</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">千川 ROI</div>
+      <div class="kpi-metric">日播 ≥ 2</div>
+      <div class="kpi-note">大促期可接受≥1.5，但长期低于2要检查直播间转化问题</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">粉丝转化率</div>
+      <div class="kpi-metric">关注→购买</div>
+      <div class="kpi-note">衡量内容是否建立了足够信任，高关注低购买说明种草不够深</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">短视频带货 GMV</div>
+      <div class="kpi-metric">视频挂车转化</div>
+      <div class="kpi-note">功能演示类视频挂商品链接，追踪直接转化贡献</div>
+    </div>
+  </div>
 
-  <footer class="report-footer">
-    <span>奥普AUPU · 品牌策划PM岗位 · 运营调研报告</span>
-    <span>2026年6月 · 内部策略参考文件</span>
-  </footer>
+  <div class="insight insight-teal">
+    <strong>抖音和小红书最大的区别：</strong>小红书是"用户主动找内容"，抖音是"内容主动找用户"。这意味着在抖音，一条内容的成败在前3秒就已经决定了——用户不会因为是奥普官方发的就多给你3秒。前3秒要给一个强烈的理由让用户继续看，这是抖音内容创作最需要磨的核心能力。
+  </div>
+</section>
 
-</main>
+<!-- ── 07 PM职能 ── -->
+<section class="section" id="pm-role">
+  <div class="section-header">
+    <span class="section-num">07</span>
+    <h2>品牌策划PM核心职能与工作节奏</h2>
+  </div>
+  <p class="section-intro">
+    品牌策划PM是整个内容运营体系的枢纽角色，既要向上承接品牌战略，横向协调跨部门资源，又要向下驱动内容生产和投放执行。不做单点工作，做系统性工作。
+  </p>
 
-<script>
-  // Active nav highlight on scroll
-  const sections = document.querySelectorAll('section[id], div[id]');
-  const navItems = document.querySelectorAll('.nav-item');
+  <div class="role-grid">
+    <div class="role-col">
+      <span class="badge badge-teal" style="margin-bottom: 10px">向上</span>
+      <h4>策略制定者</h4>
+      <div class="role-sub">与管理层对齐</div>
+      <ul>
+        <li>把品牌战略拆解为可执行的内容策略</li>
+        <li>制定月度/季度传播节奏与主题</li>
+        <li>对齐销售目标与市场KPI</li>
+        <li>向上汇报数据复盘与结论</li>
+      </ul>
+    </div>
+    <div class="role-divider"></div>
+    <div class="role-col">
+      <span class="badge badge-purple" style="margin-bottom: 10px">横向</span>
+      <h4>跨部门协调者</h4>
+      <div class="role-sub">打通内外资源</div>
+      <ul>
+        <li>对接产品线，获取新品信息和卖点</li>
+        <li>协同电商团队，同步大促节奏</li>
+        <li>对接销售，了解客户真实痛点</li>
+        <li>管理达人/代理供应商</li>
+      </ul>
+    </div>
+    <div class="role-divider"></div>
+    <div class="role-col">
+      <span class="badge badge-accent" style="margin-bottom: 10px">向下</span>
+      <h4>内容执行驱动者</h4>
+      <div class="role-sub">保证内容持续产出</div>
+      <ul>
+        <li>给内容团队出选题方向和创作Brief</li>
+        <li>审核内容，把控品牌调性与关键词</li>
+        <li>跟进发布排期，确保内容节奏不断</li>
+        <li>复盘数据，指导下一轮内容迭代</li>
+      </ul>
+    </div>
+  </div>
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navItems.forEach(item => item.classList.remove('active'));
-        const active = document.querySelector(`.nav-item[href="#${entry.target.id}"]`);
-        if (active) active.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-20% 0px -70% 0px' });
+  <div style="font-size: 12px; font-weight: 500; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px">日常工作节奏</div>
 
-  sections.forEach(s => observer.observe(s));
-</script>
+  <div class="calendar">
+    <div class="cal-row">
+      <div class="cal-label">每日</div>
+      <div class="cal-content">
+        <div class="cal-task">
+          <div class="cal-dot" style="background: var(--teal)"></div>
+          <div>
+            <div class="cal-text">早上查昨日数据：小红书互动、抖音播放/转化、电商流量来源，看有没有异常波动或意外爆文</div>
+          </div>
+        </div>
+        <div class="cal-task">
+          <div class="cal-dot" style="background: var(--teal)"></div>
+          <div>
+            <div class="cal-text">浏览竞品动态和行业热点，判断是否有可借势的内容机会</div>
+          </div>
+        </div>
+        <div class="cal-task">
+          <div class="cal-dot" style="background: var(--blue)"></div>
+          <div>
+            <div class="cal-text">推进当前内容项目：催稿、审稿、确认发布时间；跟进KFS投放今日执行状态</div>
+          </div>
+        </div>
+        <div class="cal-task">
+          <div class="cal-dot" style="background: var(--accent)"></div>
+          <div>
+            <div class="cal-text">随时响应：爆文出现立即决策是否追投信息流；监控评论区舆情，发现问题及时处理</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cal-row">
+      <div class="cal-label">每周</div>
+      <div class="cal-content">
+        <div class="cal-task">
+          <div class="cal-dot" style="background: var(--teal)"></div>
+          <div>
+            <div class="cal-text">周一：拉上周核心指标，复盘表现好/差的内容，写结论；确认本周内容排期</div>
+          </div>
+        </div>
+        <div class="cal-task">
+          <div class="cal-dot" style="background: var(--blue)"></div>
+          <div>
+            <div class="cal-text">周三：内容进度check，当周投放中期评估，有没有需要调整的方向或素材</div>
+          </div>
+        </div>
+        <div class="cal-task">
+          <div class="cal-dot" style="background: var(--amber)"></div>
+          <div>
+            <div class="cal-text">周五：下周选题会（结合热点日历、品牌节点、数据洞察），输出下周创作Brief给达人和内容团队</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cal-row">
+      <div class="cal-label">每月</div>
+      <div class="cal-content">
+        <div class="cal-task">
+          <div class="cal-dot" style="background: var(--teal)"></div>
+          <div>
+            <div class="cal-text">月初：制定月度内容主题（如"浴室改造季"），排定内容日历，确认KFS三块预算配比</div>
+          </div>
+        </div>
+        <div class="cal-task">
+          <div class="cal-dot" style="background: var(--blue)"></div>
+          <div>
+            <div class="cal-text">月中：对比月初目标看进度，决定是否需要补量；有爆文及时复制方向出更多同类内容</div>
+          </div>
+        </div>
+        <div class="cal-task">
+          <div class="cal-dot" style="background: var(--amber)"></div>
+          <div>
+            <div class="cal-text">月末：月度复盘报告（目标达成、原因分析）；优质素材归档进素材库；输出下月初步规划</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cal-row">
+      <div class="cal-label">每季</div>
+      <div class="cal-content">
+        <div class="cal-task">
+          <div class="cal-dot" style="background: var(--purple)"></div>
+          <div>
+            <div class="cal-text">季初：制定季度传播战略，结合产品路线图和销售目标定重点战役；KOL资源提前储备锁定</div>
+          </div>
+        </div>
+        <div class="cal-task">
+          <div class="cal-dot" style="background: var(--purple)"></div>
+          <div>
+            <div class="cal-text">季末：大复盘——横向对比各月数据，评估全季最优内容方向；供应商绩效评估，续约/换新决策</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="font-size: 12px; font-weight: 500; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.06em; margin: 28px 0 14px">核心工作产出物</div>
+  <div style="background: var(--paper-card); border: 0.5px solid var(--rule); border-radius: 10px; padding: 20px">
+    <div class="deliverable-row" style="font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); padding-top: 0">
+      <div>文档名称</div>
+      <div>说明</div>
+      <div style="text-align: right">频率</div>
+    </div>
+    <div class="deliverable-row">
+      <div class="del-name">月度内容传播规划</div>
+      <div class="del-desc">含主题、渠道配置、内容排期、KFS预算分配；是内容生产的"总指挥"文件</div>
+      <div class="del-freq">每月</div>
+    </div>
+    <div class="deliverable-row">
+      <div class="del-name">创作Brief</div>
+      <div class="del-desc">给达人和内容团队的详细创作指引：目标人群、核心搜索词、场景、禁忌、参考案例</div>
+      <div class="del-freq">每次合作</div>
+    </div>
+    <div class="deliverable-row">
+      <div class="del-name">内容日历</div>
+      <div class="del-desc">具体到每天/每周的发布排期表，明确平台、内容类型、负责人、状态</div>
+      <div class="del-freq">每周更新</div>
+    </div>
+    <div class="deliverable-row">
+      <div class="del-name">月度复盘报告</div>
+      <div class="del-desc">全月数据汇总、目标达成分析、爆文拆解、下月优化方向，向上汇报</div>
+      <div class="del-freq">每月</div>
+    </div>
+    <div class="deliverable-row">
+      <div class="del-name">爆文分析文档</div>
+      <div class="del-desc">拆解跑出来的内容：为什么爆、可复制的核心要素、下一步延伸选题方向</div>
+      <div class="del-freq">有爆文时</div>
+    </div>
+    <div class="deliverable-row">
+      <div class="del-name">素材资产库</div>
+      <div class="del-desc">按场景/产品/渠道整理的优质内容归档，标注适用场景，可复用/二次投放</div>
+      <div class="del-freq">持续维护</div>
+    </div>
+    <div class="deliverable-row">
+      <div class="del-name">经销商内容赋能包</div>
+      <div class="del-desc">可直接使用的朋友圈文案+素材、本地直播话术、门店活动物料，赋能线下终端</div>
+      <div class="del-freq">每季度</div>
+    </div>
+    <div class="deliverable-row" style="padding-bottom: 0; border-bottom: none">
+      <div class="del-name">供应商评估表</div>
+      <div class="del-desc">KOL合作效果评分、代理公司服务质量评估，作为续约/更换决策依据</div>
+      <div class="del-freq">每季度</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 07 内容资产 ── -->
+<section class="section">
+  <div class="section-header">
+    <span class="section-num">08</span>
+    <h2>内容资产沉淀与素材迭代策略</h2>
+  </div>
+  <p class="section-intro">
+    内容不是一次性消耗品。品牌策划PM的重要职责之一是让好内容持续"活着"——通过系统性归档、复投和迭代，最大化每一篇内容的长期价值。
+  </p>
+
+  <div class="card-grid card-grid-2" style="margin-bottom: 16px">
+    <div class="card">
+      <span class="badge badge-teal">资产沉淀策略</span>
+      <h3>让好内容持续发挥价值</h3>
+      <ul>
+        <li>爆款UGC内容转化为品牌官方素材库，用于二次投放和物料制作</li>
+        <li>小红书高互动笔记同步至天猫/京东详情页，提升货架转化率</li>
+        <li>优质种草笔记复投信息流，延长内容自然生命周期</li>
+        <li>线上优质内容沉淀为线下经销商物料包，打通线上线下</li>
+        <li>建立按产品/场景/渠道分类的素材库，减少重复生产成本</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="badge badge-amber">素材迭代策略</span>
+      <h3>用数据驱动内容持续优化</h3>
+      <ul>
+        <li>小流量测试先于规模化：先用少量内容找到爆款方向，再加大投入</li>
+        <li>每72小时看一次数据，及时淘汰互动率低的笔记，停止无效消耗</li>
+        <li>追热点快速出内容，趁流量窗口期在搜索场景占位</li>
+        <li>A/B测试封面/标题/时长，持续优化完播率和点击率</li>
+        <li>爆文复制：从爆文中提炼可复制的核心元素，产出系列内容</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="insight insight-amber">
+    <strong>爆文出现后的48小时黄金窗口：</strong>多数PM看到爆文高兴一下然后继续等下一篇。正确做法是：爆文出现的48小时内，立刻评估是否追投信息流放量，同时复盘"它为什么爆"——是标题、封面、内容角度还是刚好踩中热点？把结论当天写下来，这是下一轮内容规划最值钱的输入素材。
+  </div>
+</section>
+
+<!-- ── 08 KPI ── -->
+<section class="section" id="kpi">
+  <div class="section-header">
+    <span class="section-num">09</span>
+    <h2>核心考核指标体系</h2>
+  </div>
+  <p class="section-intro">
+    品牌策划PM的工作成果需要通过量化指标来衡量。指标体系分为品牌声量层、内容质量层、投放效率层、转化结果层四个维度，每日/每周重点盯住关键指标，及时发现问题调整策略。
+  </p>
+
+  <div class="kpi-grid" style="margin-bottom: 16px">
+    <div class="kpi-card">
+      <div class="kpi-label">品牌搜索指数 SOV</div>
+      <div class="kpi-metric">品类搜索占有率</div>
+      <div class="kpi-note">品牌词在平台搜索结果中的内容占比，每周看趋势，目标持续提升</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">内容回搜率</div>
+      <div class="kpi-metric">48h 内品牌回搜</div>
+      <div class="kpi-note">看完笔记后48小时内再搜索品牌词，反映种草是否真正打动用户</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">内容爆文率</div>
+      <div class="kpi-metric">高互动笔记占比</div>
+      <div class="kpi-note">互动率/收藏率超过行业均值的笔记比例，反映内容选题和执行质量</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">信息流投放效率</div>
+      <div class="kpi-metric">CPE / CTR</div>
+      <div class="kpi-note">每次互动成本和点击率，F投放核心健康指标，每日监控</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">搜索场景覆盖</div>
+      <div class="kpi-metric">搜索内容 SOC</div>
+      <div class="kpi-note">用户搜索目标词后能读到奥普内容的比例，S策略执行是否到位</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">内容交付率</div>
+      <div class="kpi-metric">按时发布率</div>
+      <div class="kpi-note">排期内容按时发布的比例，反映PM的项目管理和协调执行能力</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">电商引流转化</div>
+      <div class="kpi-metric">内容→电商 GMV</div>
+      <div class="kpi-note">小红书/抖音内容带来的电商平台访问和成交，衡量种草到转化的链路效率</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">直播自播效率</div>
+      <div class="kpi-metric">场均 GMV</div>
+      <div class="kpi-note">抖音店铺自播单场成交额，以及整月自播场次和总GMV趋势</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">私域用户留存</div>
+      <div class="kpi-metric">企微增粉 & 活跃率</div>
+      <div class="kpi-note">通过内容引流进入私域的用户数量和活跃程度，衡量复购潜力</div>
+    </div>
+  </div>
+
+  <div class="insight insight-teal">
+    <strong>指标优先级建议：</strong>对于奥普这类低频消费品（1-2年才装修一次），品牌声量指标（搜索指数、SOV、回搜率）比短期GMV更重要。因为用户的购买决策周期很长，今天种下的心智，可能三个月后才转化成购买。过度追求短期ROI会导致内容偏向促销，损害长期品牌价值。
+  </div>
+</section>
+
+<!-- ── 09 总结 ── -->
+<section class="section" style="border-bottom: none">
+  <div class="section-header">
+    <span class="section-num">10</span>
+    <h2>运营体系关键结论</h2>
+  </div>
+  <p class="section-intro">
+    以下是整套品牌策划PM新媒体运营体系的核心判断，是制定任何具体决策时需要始终对齐的底层逻辑。
+  </p>
+
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div class="card-accent-top" style="background: var(--teal)"></div>
+      <h3>内容是"1"，投放是"0"</h3>
+      <p>没有好内容，KFS投再多钱也是低效的。品牌策划PM最核心的投入应该在"找到正确的内容方向"上，而不是"把钱花完"上。先测试，再放量，这是永远正确的顺序。</p>
+    </div>
+    <div class="card">
+      <div class="card-accent-top" style="background: var(--blue)"></div>
+      <h3>种草和搜索必须协同</h3>
+      <p>抖音/小红书负责制造"被动发现"的种草，搜索广告负责承接"主动寻找"的转化。两者是同一条链路的前后两段，不能只做一端，否则流量要么没流入，要么在搜索环节被竞品截走。</p>
+    </div>
+    <div class="card">
+      <div class="card-accent-top" style="background: var(--amber)"></div>
+      <h3>节奏感是核心竞争力</h3>
+      <p>大促前3-4周就要和电商团队对齐节奏，新品发布前要提前布局种草内容。等业务方说"下周要冲量"再去找达人，排期根本来不及。PM的价值很大程度上体现在提前规划、不被业务牵着走。</p>
+    </div>
+    <div class="card">
+      <div class="card-accent-top" style="background: var(--accent)"></div>
+      <h3>品牌资产比短期ROI更重要</h3>
+      <p>浴霸/集成吊顶是低频消费品，用户决策周期长，今天种下的心智可能三个月后才转化。过度追求短期ROI会使内容偏向促销，损害长期品牌价值。搜索指数和回搜率比当月GMV更能反映运营是否健康。</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── 10 竞品对标 ── -->
+<section class="section" id="competitor">
+  <div class="section-header">
+    <span class="section-num">11</span>
+    <h2>竞品新媒体对标分析</h2>
+  </div>
+  <p class="section-intro">
+    了解竞品在新媒体上的打法，是品牌策划PM制定差异化策略的必要前提。品牌策划PM需要定期进行竞品内容监测，识别竞争格局中的机会窗口，而不是等竞品已经占位才开始追赶。
+  </p>
+
+  <div style="background: var(--paper-card); border: 0.5px solid var(--rule); border-radius: 10px; overflow: hidden; margin-bottom: 20px">
+    <div style="display: grid; grid-template-columns: 140px 1fr 1fr 1fr; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); padding: 12px 20px; border-bottom: 0.5px solid var(--rule); background: var(--paper-warm)">
+      <div>维度</div>
+      <div>奥普 AUPU</div>
+      <div>松下 Panasonic</div>
+      <div>雷士照明</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 140px 1fr 1fr 1fr; padding: 14px 20px; border-bottom: 0.5px solid var(--rule); gap: 0; font-size: 12px">
+      <div style="color: var(--ink-muted); font-weight: 500; padding-right: 12px; line-height: 1.6">内容定位</div>
+      <div style="color: var(--ink-mid); padding-right: 12px; line-height: 1.6">一站式卫浴/空间解决方案，品质生活方式，场景化种草</div>
+      <div style="color: var(--ink-mid); padding-right: 12px; line-height: 1.6">日系精工品质，技术背书，安全可靠的专业感</div>
+      <div style="color: var(--ink-mid); line-height: 1.6">价格竞争力，渠道下沉，大众市场覆盖</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 140px 1fr 1fr 1fr; padding: 14px 20px; border-bottom: 0.5px solid var(--rule); font-size: 12px">
+      <div style="color: var(--ink-muted); font-weight: 500; padding-right: 12px; line-height: 1.6">小红书策略</div>
+      <div style="color: var(--ink-mid); padding-right: 12px; line-height: 1.6">场景效果图种草为主，KOL矩阵覆盖，KFS组合投放</div>
+      <div style="color: var(--ink-mid); padding-right: 12px; line-height: 1.6">产品功能测评、日系家居风格种草，品牌调性强</div>
+      <div style="color: var(--ink-mid); line-height: 1.6">以促销活动信息和产品参数内容为主，种草深度不足</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 140px 1fr 1fr 1fr; padding: 14px 20px; border-bottom: 0.5px solid var(--rule); font-size: 12px">
+      <div style="color: var(--ink-muted); font-weight: 500; padding-right: 12px; line-height: 1.6">抖音策略</div>
+      <div style="color: var(--ink-mid); padding-right: 12px; line-height: 1.6">店铺自播高频运营，大促节点达人合播冲量</div>
+      <div style="color: var(--ink-mid); padding-right: 12px; line-height: 1.6">品牌自播稳定，产品演示类短视频，较少达人合作</div>
+      <div style="color: var(--ink-mid); line-height: 1.6">依赖达人带货，自播能力较弱，更偏渠道分销模式</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 140px 1fr 1fr 1fr; padding: 14px 20px; font-size: 12px">
+      <div style="color: var(--ink-muted); font-weight: 500; padding-right: 12px; line-height: 1.6">差异化机会</div>
+      <div style="color: var(--ink-mid); padding-right: 12px; line-height: 1.6"><strong style="color: var(--teal)">强化"场景解决方案"叙事，联名+国潮IP形成品牌溢价，私域运营是竞品弱项</strong></div>
+      <div style="color: var(--ink-mid); padding-right: 12px; line-height: 1.6">场景内容相对少，情感共鸣不足，可从"生活温度"角度差异化</div>
+      <div style="color: var(--ink-mid); line-height: 1.6">品牌内容基建薄弱，搜索场景覆盖不足，有被挤压空间</div>
+    </div>
+  </div>
+
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <span class="badge badge-teal">奥普的核心差异化优势</span>
+      <h3>用好"先驱者"身份</h3>
+      <ul>
+        <li>1993年创立，中国浴霸行业开创者，历史积淀是天然信任背书</li>
+        <li>839项专利、国家浴霸标准制定者，技术权威性远超竞品</li>
+        <li>故宫/华为等高端联名，建立品牌溢价，超越功能竞争</li>
+        <li>一站式空间解决方案布局，竞品仍停留在单品维度</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="badge badge-amber">需要警惕的竞争风险</span>
+      <h3>提前布局，不被追上</h3>
+      <ul>
+        <li>松下在小红书的品质感内容越来越强，日系风格对部分人群很有吸引力</li>
+        <li>新兴家居品牌切入集成吊顶赛道，用设计感打差异化</li>
+        <li>大促期竞品会加大搜索广告投入，品牌词和品类词都要提前守住</li>
+        <li>KOL资源争夺：家装垂类头部博主资源有限，要提前锁定</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="background: var(--paper-card); border: 0.5px solid var(--rule); border-radius: 10px; padding: 20px; margin-top: 12px">
+    <div style="font-size: 12px; font-weight: 500; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px">PM竞品监测日常动作</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px">
+      <div>
+        <div style="font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 6px">每日扫一遍</div>
+        <ul class="clist">
+          <li>竞品官方账号今天发了什么，有没有新的内容动作</li>
+          <li>小红书搜索"浴霸推荐"前10条里竞品占了几条</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 6px">每周深度看</div>
+        <ul class="clist">
+          <li>竞品近7天互动量最高的内容，分析为什么好</li>
+          <li>竞品在投的搜索词有没有变化，有没有开始卡奥普的词</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 6px">每月输出报告</div>
+        <ul class="clist">
+          <li>竞品内容矩阵对比，自己的差距在哪里</li>
+          <li>搜索场景占有率对比（奥普 vs 主要竞品）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 11 达人合作 ── -->
+<section class="section" id="kol">
+  <div class="section-header">
+    <span class="section-num">12</span>
+    <h2>达人合作管理体系</h2>
+  </div>
+  <p class="section-intro">
+    达人合作是K内容策略的核心执行环节。品牌策划PM需要建立一套从选人、出Brief、过程跟踪到效果评估的标准化管理流程，而不是每次合作都靠经验临时拍脑袋。
+  </p>
+
+  <div style="font-size: 12px; font-weight: 500; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px">达人分层策略</div>
+  <div class="card-grid card-grid-4" style="margin-bottom: 24px">
+    <div class="card">
+      <div class="card-accent-top" style="background: var(--accent)"></div>
+      <span class="badge badge-accent">头部 KOL</span>
+      <h3>100万粉以上</h3>
+      <ul>
+        <li>用于重大节点破圈（新品发布/大促）</li>
+        <li>强调曝光量，不追求直接转化</li>
+        <li>一季度1-2次，不频繁合作</li>
+        <li>提前6-8周锁定资源</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-accent-top" style="background: var(--blue)"></div>
+      <span class="badge badge-blue">腰部 KOL</span>
+      <h3>10-100万粉</h3>
+      <div style="font-size: 11px; color: var(--teal); margin-bottom: 8px; font-weight: 500">★ 主力合作类型</div>
+      <ul>
+        <li>家装/设计/卫浴垂类博主为主</li>
+        <li>粉丝精准，种草转化效率最高</li>
+        <li>每月持续合作，是内容基盘</li>
+        <li>提前3-4周规划合作</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-accent-top" style="background: var(--teal)"></div>
+      <span class="badge badge-teal">KOC 素人</span>
+      <h3>1-10万粉</h3>
+      <ul>
+        <li>真实用户身份，信任感最强</li>
+        <li>批量合作铺量，覆盖搜索长尾词</li>
+        <li>成本低，适合持续高频投入</li>
+        <li>选粉丝画像而非粉丝量</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-accent-top" style="background: var(--amber)"></div>
+      <span class="badge badge-amber">品牌自有账号</span>
+      <h3>官方矩阵</h3>
+      <ul>
+        <li>品牌旗舰号负责核心内容输出</li>
+        <li>产品线子账号覆盖细分场景</li>
+        <li>自播运营，日常流量基盘</li>
+        <li>私域导流，企微承接</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="font-size: 12px; font-weight: 500; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px">达人筛选标准（腰部KOL为例）</div>
+  <div style="background: var(--paper-card); border: 0.5px solid var(--rule); border-radius: 10px; padding: 20px; margin-bottom: 20px">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px">
+      <div>
+        <div style="font-size: 12px; font-weight: 500; color: var(--teal); margin-bottom: 10px">✓ 必须符合</div>
+        <ul class="clist">
+          <li>粉丝画像中装修中/有购房需求的人群占比 ≥40%</li>
+          <li>近30天平均互动率（点赞+收藏/曝光）≥3%</li>
+          <li>内容垂直度高：家装/卫浴/设计类内容占比 ≥60%</li>
+          <li>账号近6个月没有翻车事件或负面舆情</li>
+          <li>内容风格与奥普品牌调性（品质感/温暖感）相符</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size: 12px; font-weight: 500; color: var(--accent); margin-bottom: 10px">✗ 一票否决</div>
+        <ul class="clist">
+          <li>粉丝量大但互动率极低（低于1%），数据注水嫌疑</li>
+          <li>近期合作过主要竞品，且内容高度正向评价</li>
+          <li>账号风格过于娱乐化，与家居品类严重不搭</li>
+          <li>评论区质量差，大量无意义评论或机器刷量</li>
+          <li>报价远超行业均价，性价比明显不合理</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div style="font-size: 12px; font-weight: 500; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px">创作Brief标准模板要素</div>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <span class="badge badge-blue">必须在Brief里写清楚的</span>
+      <ul>
+        <li><strong style="color: var(--ink)">目标人群：</strong>正在装修/刚换房的25-40岁用户，关注卫浴空间品质，有一定消费能力</li>
+        <li><strong style="color: var(--ink)">核心搜索词（必须植入）：</strong>标题必须出现、正文自然出现2-3次</li>
+        <li><strong style="color: var(--ink)">核心传递感受：</strong>不是卖点列表，是"用户看完笔记应该产生什么感受"，如"我家卫生间也想这样改"</li>
+        <li><strong style="color: var(--ink)">产品呈现要求：</strong>产品出现的场景、角度、时长/篇幅占比</li>
+        <li><strong style="color: var(--ink)">不可出现的内容：</strong>品牌禁忌、竞品名称、不实数据</li>
+        <li><strong style="color: var(--ink)">参考内容：</strong>3-5篇风格相近的历史爆文链接</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="badge badge-amber">常见Brief问题（要避免）</span>
+      <ul>
+        <li>只写产品参数，没有告诉达人"用户的感受是什么"</li>
+        <li>要求"自然植入"但没有给关键词，达人自己想词往往偏差大</li>
+        <li>参考案例只给品牌自制内容，没有给同类达人的爆文</li>
+        <li>限制过多（不能这样，不能那样），让达人失去创作空间</li>
+        <li>审核环节不给修改意见，只说"不好，重做"，浪费双方时间</li>
+        <li>发出Brief后消失，不跟进初稿状态，导致交稿延误</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="background: var(--paper-card); border: 0.5px solid var(--rule); border-radius: 10px; padding: 20px; margin-top: 12px">
+    <div style="font-size: 12px; font-weight: 500; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 14px">达人合作效果评估维度</div>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px">
+      <div>
+        <div style="font-size: 11px; font-weight: 500; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px">内容质量</div>
+        <ul class="clist" style="font-size: 12px">
+          <li>互动率（点赞+收藏+评论/曝光）</li>
+          <li>收藏率（反映内容是否有长期价值）</li>
+          <li>评论质量（是否有真实讨论）</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size: 11px; font-weight: 500; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px">传播效果</div>
+        <ul class="clist" style="font-size: 12px">
+          <li>曝光量与预期是否达标</li>
+          <li>品牌关键词搜索量是否有波动</li>
+          <li>48h内品牌词回搜率</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size: 11px; font-weight: 500; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px">转化贡献</div>
+        <ul class="clist" style="font-size: 12px">
+          <li>笔记外溢（48h内电商搜索）</li>
+          <li>直接引流电商平台的访客数</li>
+          <li>是否可二次复投放量</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size: 11px; font-weight: 500; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px">合作体验</div>
+        <ul class="clist" style="font-size: 12px">
+          <li>是否按时交稿，配合度如何</li>
+          <li>内容质量是否稳定</li>
+          <li>是否值得长期合作</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 12 年度传播日历 ── -->
+<section class="section" id="calendar">
+  <div class="section-header">
+    <span class="section-num">13</span>
+    <h2>年度传播节奏日历</h2>
+  </div>
+  <p class="section-intro">
+    家居行业的传播节奏有明显的季节性规律，奥普品牌策划PM需要提前12-16周布局重大节点，而不是临近才开始准备。以下是全年传播节奏的整体框架。
+  </p>
+
+  <div style="background: var(--paper-card); border: 0.5px solid var(--rule); border-radius: 10px; overflow: hidden; margin-bottom: 16px">
+    <!-- Q1 -->
+    <div style="border-bottom: 0.5px solid var(--rule)">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 20px; background: var(--paper-warm); border-bottom: 0.5px solid var(--rule)">
+        <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--teal); flex-shrink: 0"></div>
+        <span style="font-size: 12px; font-weight: 500; color: var(--ink)">Q1（1-3月）— 开年种草，装修旺季蓄水</span>
+        <span style="font-size: 11px; color: var(--ink-muted); margin-left: auto">KFS配比建议 K5:F3:S2</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0">
+        <div style="padding: 14px 20px; border-right: 0.5px solid var(--rule)">
+          <div style="font-size: 11px; font-weight: 500; color: var(--ink-muted); margin-bottom: 8px">1月</div>
+          <ul class="clist">
+            <li>新年换新风潮，"新年新家"装修内容</li>
+            <li>年货节电商大促，浴霸/集成吊顶冲量</li>
+            <li>布局春节后装修季内容预热</li>
+          </ul>
+        </div>
+        <div style="padding: 14px 20px; border-right: 0.5px solid var(--rule)">
+          <div style="font-size: 11px; font-weight: 500; color: var(--ink-muted); margin-bottom: 8px">2月</div>
+          <ul class="clist">
+            <li>春节期间品牌温情内容，维持声量</li>
+            <li>元宵后复工，装修旺季正式启动</li>
+            <li>新房装修选购攻略内容铺量</li>
+          </ul>
+        </div>
+        <div style="padding: 14px 20px">
+          <div style="font-size: 11px; font-weight: 500; color: var(--ink-muted); margin-bottom: 8px">3月</div>
+          <ul class="clist">
+            <li>38女神节，卫浴空间品质生活内容</li>
+            <li>春季装修旺季，场景种草内容高峰</li>
+            <li>家居展季节，新品预热内容布局</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Q2 -->
+    <div style="border-bottom: 0.5px solid var(--rule)">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 20px; background: var(--paper-warm); border-bottom: 0.5px solid var(--rule)">
+        <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--blue); flex-shrink: 0"></div>
+        <span style="font-size: 12px; font-weight: 500; color: var(--ink)">Q2（4-6月）— 618冲刺，全年最重要大促节点</span>
+        <span style="font-size: 11px; color: var(--ink-muted); margin-left: auto">KFS配比建议 K3:F4:S3 → 大促期 K2:F4:S4</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0">
+        <div style="padding: 14px 20px; border-right: 0.5px solid var(--rule)">
+          <div style="font-size: 11px; font-weight: 500; color: var(--ink-muted); margin-bottom: 8px">4月</div>
+          <ul class="clist">
+            <li>新品上市内容铺垫（若有新品节点）</li>
+            <li>五一促销预热，内容种草提前8周</li>
+            <li>五一装修假期场景内容</li>
+          </ul>
+        </div>
+        <div style="padding: 14px 20px; border-right: 0.5px solid var(--rule)">
+          <div style="font-size: 11px; font-weight: 500; color: var(--ink-muted); margin-bottom: 8px">5月</div>
+          <ul class="clist">
+            <li>五一大促冲刺，直播频次加密</li>
+            <li>618蓄水期，种草内容进入高强度</li>
+            <li>小红书搜索词全面卡位，S预算加大</li>
+          </ul>
+        </div>
+        <div style="padding: 14px 20px">
+          <div style="font-size: 11px; font-weight: 500; color: var(--ink-muted); margin-bottom: 8px">6月</div>
+          <ul class="clist">
+            <li>618大促爆发期，自播全天候运营</li>
+            <li>618后收割期，用户晒单UGC激励</li>
+            <li>夏季凉霸产品内容切换</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Q3 -->
+    <div style="border-bottom: 0.5px solid var(--rule)">
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 20px; background: var(--paper-warm); border-bottom: 0.5px solid var(--rule)">
+        <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--amber); flex-shrink: 0"></div>
+        <span style="font-size: 12px; font-weight: 500; color: var(--ink)">Q3（7-9月）— 夏季品类切换，双11蓄水启动</span>
+        <span style="font-size: 11px; color: var(--ink-muted); margin-left: auto">KFS配比建议 K4:F3:S3</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0">
+        <div style="padding: 14px 20px; border-right: 0.5px solid var(--rule)">
+          <div style="font-size: 11px; font-weight: 500; color: var(--ink-muted); margin-bottom: 8px">7月</div>
+          <ul class="clist">
+            <li>凉霸/晾衣机等夏季品类主推</li>
+            <li>装修淡季，内容以品牌故事/干货攻略为主</li>
+            <li>618复盘完成，调整下半年内容策略</li>
+          </ul>
+        </div>
+        <div style="padding: 14px 20px; border-right: 0.5px solid var(--rule)">
+          <div style="font-size: 11px; font-weight: 500; color: var(--ink-muted); margin-bottom: 8px">8月</div>
+          <ul class="clist">
+            <li>七夕节点，新居/婚房装修场景内容</li>
+            <li>秋季装修旺季预热，搜索词提前布局</li>
+            <li>新品研发信息探索（若有），达人资源储备</li>
+          </ul>
+        </div>
+        <div style="padding: 14px 20px">
+          <div style="font-size: 11px; font-weight: 500; color: var(--ink-muted); margin-bottom: 8px">9月</div>
+          <ul class="clist">
+            <li>秋季装修旺季启动，场景种草内容高峰</li>
+            <li>双11蓄水开始，内容种草进入预热阶段</li>
+            <li>锁定双11达人合作资源（提前8周）</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Q4 -->
+    <div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px 20px; background: var(--paper-warm); border-bottom: 0.5px solid var(--rule)">
+        <div style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0"></div>
+        <span style="font-size: 12px; font-weight: 500; color: var(--ink)">Q4（10-12月）— 双11冲刺，年终收官</span>
+        <span style="font-size: 11px; color: var(--ink-muted); margin-left: auto">KFS配比建议 K2:F4:S4（大促期）</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0">
+        <div style="padding: 14px 20px; border-right: 0.5px solid var(--rule)">
+          <div style="font-size: 11px; font-weight: 500; color: var(--ink-muted); margin-bottom: 8px">10月</div>
+          <ul class="clist">
+            <li>双11预热期，加大KFS全面投放</li>
+            <li>国庆装修季内容高密度布局</li>
+            <li>品类词搜索卡位全面铺开</li>
+          </ul>
+        </div>
+        <div style="padding: 14px 20px; border-right: 0.5px solid var(--rule)">
+          <div style="font-size: 11px; font-weight: 500; color: var(--ink-muted); margin-bottom: 8px">11月</div>
+          <ul class="clist">
+            <li>双11爆发，直播全天候冲量</li>
+            <li>双11后UGC激励，用户晒单内容收集</li>
+            <li>年底新房装修场景持续种草</li>
+          </ul>
+        </div>
+        <div style="padding: 14px 20px">
+          <div style="font-size: 11px; font-weight: 500; color: var(--ink-muted); margin-bottom: 8px">12月</div>
+          <ul class="clist">
+            <li>年终总结内容，品牌年度回顾</li>
+            <li>元旦促销预热，为来年开年蓄水</li>
+            <li>全年数据复盘，制定来年传播策略</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight insight-amber">
+    <strong>节奏感是PM最核心的竞争力：</strong>种草内容需要时间爬升自然流量，大促节点的内容要提前6-8周发布，等自然流量起来后再加大F投放放量。临近节点才开始出内容，不仅来不及，还会因为急着出稿而牺牲内容质量。提前规划、留出爬升时间，才是节奏感的精髓。
+  </div>
+</section>
+
+<!-- ── 13 风险与危机 ── -->
+<section class="section" id="crisis">
+  <div class="section-header">
+    <span class="section-num">14</span>
+    <h2>内容风险与危机应对预案</h2>
+  </div>
+  <p class="section-intro">
+    奥普作为有一定品牌知名度的头部品牌，一旦出现内容失误或产品负面，舆情扩散速度很快。品牌策划PM需要提前制定应对预案，而不是出了事再临时想办法。
+  </p>
+
+  <div class="card-grid card-grid-2" style="margin-bottom: 16px">
+    <div class="card">
+      <span class="badge badge-accent">风险类型1：内容违规</span>
+      <h3>发布前的审核机制</h3>
+      <ul>
+        <li><strong style="color: var(--ink)">广告法合规：</strong>绝对化用语（"最""第一""国家级"）不能随意使用，所有宣传数据必须有依据</li>
+        <li><strong style="color: var(--ink)">平台规则合规：</strong>小红书/抖音各有不同的违规红线，需要保持对平台最新规则的了解</li>
+        <li><strong style="color: var(--ink)">品牌禁忌：</strong>建立一份"品牌禁止内容清单"，所有合作达人和内容团队必须了解</li>
+        <li><strong style="color: var(--ink)">发布前审核流程：</strong>内容团队初稿→PM审核→法务快速走查（必要时）→发布</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="badge badge-amber">风险类型2：产品负面舆情</span>
+      <h3>危机响应的标准流程</h3>
+      <ul>
+        <li><strong style="color: var(--ink)">第一时间（0-2小时）：</strong>判断舆情性质（个例抱怨 vs 系统性问题），不要急于删评或公开回应</li>
+        <li><strong style="color: var(--ink)">2-6小时：</strong>内部核实真实情况，同步客服/产品/法务，确认口径</li>
+        <li><strong style="color: var(--ink)">6-24小时：</strong>官方账号发出态度声明，展示处理意愿，私信联系当事用户</li>
+        <li><strong style="color: var(--ink)">后续：</strong>公开处理结果，避免事件继续发酵，通过正向内容修复口碑</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="badge badge-blue">风险类型3：达人翻车</span>
+      <h3>合作过程中的风险控制</h3>
+      <ul>
+        <li>合同里明确约定：达人出现重大负面事件时，品牌有权要求删除合作内容并停止合作</li>
+        <li>不要把所有鸡蛋放在一个篮子：头部达人合作不要超过总预算的30%</li>
+        <li>合作期间持续监测达人账号动态，发现风险苗头提前处理</li>
+        <li>内容发布后7天内持续关注评论区，及时发现异常信号</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="badge badge-purple">风险类型4：竞品恶意攻击</span>
+      <h3>搜索场景的防御策略</h3>
+      <ul>
+        <li>定期检查小红书"奥普浴霸"搜索结果，是否有异常负面笔记集中出现</li>
+        <li>品牌词下必须始终有奥普官方内容排在前列，防止负面内容霸占首屏</li>
+        <li>遇到明显水军攻击，及时通过平台举报机制处理，同时加大S投放守住品牌词</li>
+        <li>通过持续输出高质量内容，让正面口碑在自然搜索中稳定占位</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>预防大于应对：</strong>最好的危机管理是让危机不发生。建立严格的内容审核流程、维护真实透明的用户口碑、定期进行品牌舆情监测，比任何危机公关方案都有效。PM的日常工作中，每周花30分钟搜索"奥普浴霸"看评论区动态，是成本最低的舆情预警手段。
+  </div>
+</section>
+
+<!-- ── 14 执行SOP ── -->
+<section class="section" id="sop">
+  <div class="section-header">
+    <span class="section-num">15</span>
+    <h2>可落地执行 SOP 清单</h2>
+  </div>
+  <p class="section-intro">
+    以下是品牌策划PM日常运营中最高频的几个核心动作的标准操作流程，把这些动作做到标准化，是团队能力从"靠人"到"靠系统"的关键一步。
+  </p>
+
+  <div style="margin-bottom: 20px">
+    <div style="font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 12px; display: flex; align-items: center; gap: 8px">
+      <span style="background: var(--teal); color: white; font-size: 10px; padding: 2px 8px; border-radius: 20px; font-weight: 500">SOP 01</span>
+      月度内容规划制定流程（每月1日前完成）
+    </div>
+    <div style="background: var(--paper-card); border: 0.5px solid var(--rule); border-radius: 10px; overflow: hidden">
+      <div style="display: grid; grid-template-columns: 40px 1fr; gap: 0">
+        <div style="background: var(--teal); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 16px; font-weight: 600; color: white; min-height: 52px">1</div>
+        <div style="padding: 14px 18px; border-bottom: 0.5px solid var(--rule)">
+          <div style="font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 4px">收集输入信息</div>
+          <div style="font-size: 12px; color: var(--ink-mid)">上月数据复盘结论 + 本月产品节奏（有无新品/活动）+ 本月促销节点 + 竞品动态 + 热点日历（节假日、行业热点）</div>
+        </div>
+        <div style="background: var(--teal); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 16px; font-weight: 600; color: white; opacity: 0.7; min-height: 52px">2</div>
+        <div style="padding: 14px 18px; border-bottom: 0.5px solid var(--rule)">
+          <div style="font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 4px">确定月度核心主题</div>
+          <div style="font-size: 12px; color: var(--ink-mid)">一个月只聚焦1-2个核心内容主题，不要贪多。主题要和用户当下的生活场景强相关（如春季装修、夏季清凉浴室）</div>
+        </div>
+        <div style="background: var(--teal); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 16px; font-weight: 600; color: white; opacity: 0.55; min-height: 52px">3</div>
+        <div style="padding: 14px 18px; border-bottom: 0.5px solid var(--rule)">
+          <div style="font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 4px">拆解选题清单</div>
+          <div style="font-size: 12px; color: var(--ink-mid)">把主题拆成10-15个具体选题，每个选题注明：适合哪个平台、适合什么类型的达人/内容形式、要埋哪些关键词</div>
+        </div>
+        <div style="background: var(--teal); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 16px; font-weight: 600; color: white; opacity: 0.4; min-height: 52px">4</div>
+        <div style="padding: 14px 18px; border-bottom: 0.5px solid var(--rule)">
+          <div style="font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 4px">分配KFS预算</div>
+          <div style="font-size: 12px; color: var(--ink-mid)">根据月度目标（品牌声量 vs 促销转化）确定K/F/S三块预算比例；明确哪些内容做自然流量，哪些要投放放量</div>
+        </div>
+        <div style="background: var(--teal); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 16px; font-weight: 600; color: white; opacity: 0.25; min-height: 52px">5</div>
+        <div style="padding: 14px 18px">
+          <div style="font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 4px">输出内容日历 & 启动执行</div>
+          <div style="font-size: 12px; color: var(--ink-mid)">把所有内容排进日历，明确负责人和截止时间；同步给相关团队和达人，发出本月合作Brief</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 20px">
+    <div style="font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 12px; display: flex; align-items: center; gap: 8px">
+      <span style="background: var(--blue); color: white; font-size: 10px; padding: 2px 8px; border-radius: 20px; font-weight: 500">SOP 02</span>
+      爆文识别与快速放量流程（随时触发）
+    </div>
+    <div style="background: var(--paper-card); border: 0.5px solid var(--rule); border-radius: 10px; overflow: hidden">
+      <div style="display: grid; grid-template-columns: 40px 1fr; gap: 0">
+        <div style="background: var(--blue); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 16px; font-weight: 600; color: white; min-height: 52px">1</div>
+        <div style="padding: 14px 18px; border-bottom: 0.5px solid var(--rule)">
+          <div style="font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 4px">爆文判定标准</div>
+          <div style="font-size: 12px; color: var(--ink-mid)">发布后24小时内：互动率超过行业均值3倍以上，或收藏量超过200，或评论中出现大量真实问价/询问购买的评论</div>
+        </div>
+        <div style="background: var(--blue); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 16px; font-weight: 600; color: white; opacity: 0.7; min-height: 52px">2</div>
+        <div style="padding: 14px 18px; border-bottom: 0.5px solid var(--rule)">
+          <div style="font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 4px">48小时内拆解原因</div>
+          <div style="font-size: 12px; color: var(--ink-mid)">快速分析：标题/封面抓眼？内容角度新颖？踩中了哪个热点？用户评论里呼声最高的是什么？把结论写下来，不能只停留在"感觉挺好的"</div>
+        </div>
+        <div style="background: var(--blue); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 16px; font-weight: 600; color: white; opacity: 0.55; min-height: 52px">3</div>
+        <div style="padding: 14px 18px; border-bottom: 0.5px solid var(--rule)">
+          <div style="font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 4px">决策是否追投信息流</div>
+          <div style="font-size: 12px; color: var(--ink-mid)">判断依据：目标人群匹配度、产品相关度、是否适合加大曝光；适合追投则立即启动信息流放量，把握流量窗口期（48-72小时内）</div>
+        </div>
+        <div style="background: var(--blue); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 16px; font-weight: 600; color: white; opacity: 0.4; min-height: 52px">4</div>
+        <div style="padding: 14px 18px">
+          <div style="font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 4px">复制爆款方向</div>
+          <div style="font-size: 12px; color: var(--ink-mid)">基于拆解结论，立即出同类选题的Brief，安排3-5篇同方向内容跟进生产；把爆文归入素材库，标注"可复制方向"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div style="font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 12px; display: flex; align-items: center; gap: 8px">
+      <span style="background: var(--amber); color: white; font-size: 10px; padding: 2px 8px; border-radius: 20px; font-weight: 500">SOP 03</span>
+      月度数据复盘报告框架
+    </div>
+    <div style="background: var(--paper-card); border: 0.5px solid var(--rule); border-radius: 10px; padding: 20px">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px">
+        <div>
+          <div style="font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 10px">报告必须回答的5个问题</div>
+          <ul class="clist">
+            <li>本月核心指标达成了多少？（和目标对比，不只是和上月对比）</li>
+            <li>表现最好的内容是什么，为什么好？</li>
+            <li>表现最差的内容是什么，为什么差？</li>
+            <li>KFS三块投入的ROI分别怎么样，哪块效率最高？</li>
+            <li>下月最重要的一个调整方向是什么？（只说一个，说清楚）</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 10px">常见复盘误区（要避免）</div>
+          <ul class="clist">
+            <li>只列数据，不给结论：堆一堆图表，但不说这意味着什么</li>
+            <li>只说好的，回避差的：一份好的复盘必须正视失败</li>
+            <li>原因归结为"平台算法变了"：这是不愿深究的借口</li>
+            <li>下月计划太泛：说"继续加强内容质量"等于没说</li>
+            <li>复盘太晚：月末最后一天才开始写，大量细节已经记不清了</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── 15 抖音打法 ── -->
+<section class="section" id="douyin">
+  <div class="section-header">
+    <span class="section-num">16</span>
+    <h2>抖音平台完整打法设计</h2>
+  </div>
+  <p class="section-intro">
+    抖音是奥普最核心的转化阵地，也是日常运营投入最重的平台。抖音的逻辑和小红书完全不同：小红书靠"搜索发现"，抖音靠"算法推送"；小红书用户主动找，抖音用户被动刷。这意味着奥普在抖音的内容必须在前3秒就抓住用户，而不是慢慢铺垫。整套打法围绕"自播+达人+短视频+投流"四块协同展开。
+  </p>
+
+  <!-- 账号矩阵 -->
+  <div style="font-size:12px;font-weight:500;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">账号矩阵搭建</div>
+  <div class="card-grid card-grid-3" style="margin-bottom:24px">
+    <div class="card">
+      <div class="card-accent-top" style="background:var(--accent)"></div>
+      <span class="badge badge-accent">品牌旗舰号</span>
+      <h3>奥普官方账号</h3>
+      <ul>
+        <li>承载品牌最核心的内容输出和自播运营</li>
+        <li>负责大促节点的爆发直播，冲量主阵地</li>
+        <li>积累品牌粉丝，建立官方信任背书</li>
+        <li>内容以产品演示、场景种草、品牌故事为主</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-accent-top" style="background:var(--blue)"></div>
+      <span class="badge badge-blue">产品线垂类号</span>
+      <h3>浴霸号 / 集成吊顶号</h3>
+      <ul>
+        <li>针对不同品类的精准用户单独运营</li>
+        <li>内容更垂直，算法分发精准度更高</li>
+        <li>浴霸号主打冬季取暖、安全功能场景</li>
+        <li>集成吊顶号主打空间美学、家装改造场景</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-accent-top" style="background:var(--teal)"></div>
+      <span class="badge badge-teal">导购/客服号</span>
+      <h3>私域导流专用</h3>
+      <ul>
+        <li>承接直播间和视频评论区的用户咨询</li>
+        <li>发布选购攻略、安装指南等实用内容</li>
+        <li>引导用户加企微，进入私域沉淀</li>
+        <li>内容偏工具性，不追求大曝光</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 自播体系 -->
+  <div style="font-size:12px;font-weight:500;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">店铺自播体系设计</div>
+  <div style="background:var(--paper-card);border:.5px solid var(--rule);border-radius:10px;overflow:hidden;margin-bottom:16px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+      <div style="padding:18px 20px;border-right:.5px solid var(--rule);border-bottom:.5px solid var(--rule)">
+        <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-muted);margin-bottom:10px">日常自播节奏</div>
+        <ul class="clist">
+          <li><strong style="color:var(--ink)">开播时段：</strong>工作日晚8-11点（流量高峰），周末下午2-5点+晚8-11点双开</li>
+          <li><strong style="color:var(--ink)">每日开播时长：</strong>至少4小时，大促期间16-24小时不间断</li>
+          <li><strong style="color:var(--ink)">主播配置：</strong>主播（产品讲解）+ 副播/助播（互动维场、处理评论）</li>
+          <li><strong style="color:var(--ink)">话术结构：</strong>开场引流（福利预告）→ 产品讲解 → 限时优惠 → 促单 → 下一波福利预告循环</li>
+        </ul>
+      </div>
+      <div style="padding:18px 20px;border-bottom:.5px solid var(--rule)">
+        <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-muted);margin-bottom:10px">直播间内容结构（一场4小时）</div>
+        <ul class="clist">
+          <li><strong style="color:var(--ink)">前30分钟：</strong>开场福利款（低价爆品）吸引进场，拉高在线人数基数</li>
+          <li><strong style="color:var(--ink)">30-90分钟：</strong>主推款重点讲解，产品演示+用户证言+限时价格</li>
+          <li><strong style="color:var(--ink)">90-150分钟：</strong>利润款+套餐组合销售，转化高意向用户</li>
+          <li><strong style="color:var(--ink)">150-240分钟：</strong>福利返场+预告下一场，维持在线人数留存</li>
+        </ul>
+      </div>
+      <div style="padding:18px 20px;border-right:.5px solid var(--rule)">
+        <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-muted);margin-bottom:10px">自播间投流策略</div>
+        <ul class="clist">
+          <li>千川直播投流：精准定向"装修中/有购房意向"人群包</li>
+          <li>投放目标选"直播间成交"，而非单纯追求观看量</li>
+          <li>每场直播前30分钟投流最重要，把人数基数拉起来算法才会推流</li>
+          <li>自然流量占比目标≥30%，不能完全依赖付费流量</li>
+        </ul>
+      </div>
+      <div style="padding:18px 20px">
+        <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-muted);margin-bottom:10px">直播间核心健康指标</div>
+        <ul class="clist">
+          <li><strong style="color:var(--ink)">UV价值：</strong>每个进入直播间的用户平均贡献的GMV，核心效率指标</li>
+          <li><strong style="color:var(--ink)">停留时长：</strong>用户平均停留时间，反映内容吸引力</li>
+          <li><strong style="color:var(--ink)">转化率：</strong>进入直播间的用户中实际下单比例</li>
+          <li><strong style="color:var(--ink)">自然流量占比：</strong>反映账号权重是否在持续积累</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 达人合播 -->
+  <div style="font-size:12px;font-weight:500;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">达人合播策略</div>
+  <div class="card-grid card-grid-2" style="margin-bottom:24px">
+    <div class="card">
+      <span class="badge badge-accent">节点爆发型合播</span>
+      <h3>大促/新品发布时用</h3>
+      <ul>
+        <li>选粉丝量500万以上的家居/生活类头部达人，甚至明星艺人</li>
+        <li>目标是单场GMV冲量，同时带动品牌搜索指数大幅上涨</li>
+        <li>达人出场费+坑位费+佣金三段计价，提前6-8周锁定</li>
+        <li>合播当天配合信息流投放加热，放大自然曝光</li>
+        <li>合播结束后切片优质片段发短视频，延续流量红利</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="badge badge-teal">长效种草型合作</span>
+      <h3>日常持续合作用</h3>
+      <ul>
+        <li>选家装垂类腰部达人（50-200万粉），粉丝精准</li>
+        <li>以佣金分成为主，降低固定成本，让达人更有动力卖货</li>
+        <li>每月合作2-4个，保持内容持续输出不断档</li>
+        <li>达人发短视频种草 + 来奥普直播间连麦，形成流量联动</li>
+        <li>效果好的达人优先续约，建立长期合作关系</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 短视频内容策略 -->
+  <div style="font-size:12px;font-weight:500;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">短视频内容策略</div>
+  <div style="background:var(--paper-card);border:.5px solid var(--rule);border-radius:10px;padding:20px;margin-bottom:16px">
+    <div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:14px">抖音短视频的黄金公式：前3秒留人 + 中间有料 + 结尾引流</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px">
+      <div style="background:var(--accent-light);border-radius:8px;padding:14px">
+        <div style="font-size:11px;font-weight:500;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">前3秒 · 钩子</div>
+        <ul class="clist" style="font-size:12px">
+          <li>视觉冲击：效果图前后对比、浴室改造呈现</li>
+          <li>痛点开场："冬天洗澡冷到发抖？"</li>
+          <li>悬念制造："这个浴霸有什么不一样？"</li>
+          <li>数据震惊："3秒热到28度"</li>
+        </ul>
+      </div>
+      <div style="background:var(--blue-light);border-radius:8px;padding:14px">
+        <div style="font-size:11px;font-weight:500;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">中间部分 · 有料</div>
+        <ul class="clist" style="font-size:12px">
+          <li>产品功能真实演示，不念参数</li>
+          <li>场景化展示，让用户代入"我家也能这样"</li>
+          <li>用户证言/真实安装案例</li>
+          <li>专业知识干货，建立信任感</li>
+        </ul>
+      </div>
+      <div style="background:var(--teal-light);border-radius:8px;padding:14px">
+        <div style="font-size:11px;font-weight:500;color:var(--teal);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">结尾 · 引流</div>
+        <ul class="clist" style="font-size:12px">
+          <li>引导进直播间："直播间今天有活动"</li>
+          <li>引导加购："点击下方链接"</li>
+          <li>引导关注："更多装修技巧关注我"</li>
+          <li>引导评论互动，提升账号权重</li>
+        </ul>
+      </div>
+    </div>
+    <div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:10px">六类核心短视频内容类型</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <span style="background:var(--paper-warm);border:.5px solid var(--rule);border-radius:6px;padding:3px 8px;font-size:11px;font-weight:500;color:var(--ink-muted);white-space:nowrap;flex-shrink:0">场景改造</span>
+        <p style="font-size:12px;color:var(--ink-mid);line-height:1.6">卫浴间/厨房改造前后对比，高颜值呈现，激发用户"我也想改"的欲望。完播率最高的内容类型。</p>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <span style="background:var(--paper-warm);border:.5px solid var(--rule);border-radius:6px;padding:3px 8px;font-size:11px;font-weight:500;color:var(--ink-muted);white-space:nowrap;flex-shrink:0">功能演示</span>
+        <p style="font-size:12px;color:var(--ink-mid);line-height:1.6">浴霸取暖速度测试、静音效果对比、智能联控演示，数据化呈现，建立产品信任感。</p>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <span style="background:var(--paper-warm);border:.5px solid var(--rule);border-radius:6px;padding:3px 8px;font-size:11px;font-weight:500;color:var(--ink-muted);white-space:nowrap;flex-shrink:0">避坑攻略</span>
+        <p style="font-size:12px;color:var(--ink-mid);line-height:1.6">"买浴霸前必看的5个坑""集成吊顶选错这辈子都后悔"，痛点共鸣强，分享率高。</p>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <span style="background:var(--paper-warm);border:.5px solid var(--rule);border-radius:6px;padding:3px 8px;font-size:11px;font-weight:500;color:var(--ink-muted);white-space:nowrap;flex-shrink:0">用户晒单</span>
+        <p style="font-size:12px;color:var(--ink-mid);line-height:1.6">真实用户开箱、安装完成展示，UGC内容信任感最强，直接影响潜在用户购买决策。</p>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <span style="background:var(--paper-warm);border:.5px solid var(--rule);border-radius:6px;padding:3px 8px;font-size:11px;font-weight:500;color:var(--ink-muted);white-space:nowrap;flex-shrink:0">直播切片</span>
+        <p style="font-size:12px;color:var(--ink-mid);line-height:1.6">把直播间精彩片段剪辑成短视频，成本极低，内容供给量大，同时引流用户关注直播间。</p>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <span style="background:var(--paper-warm);border:.5px solid var(--rule);border-radius:6px;padding:3px 8px;font-size:11px;font-weight:500;color:var(--ink-muted);white-space:nowrap;flex-shrink:0">品牌故事</span>
+        <p style="font-size:12px;color:var(--ink-mid);line-height:1.6">30年品牌历程、联名故宫、参与公益，建立品牌温度，适合大促前期投放提升好感度。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 千川投流 -->
+  <div style="font-size:12px;font-weight:500;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">巨量千川投流策略</div>
+  <div class="card-grid card-grid-2" style="margin-bottom:16px">
+    <div class="card">
+      <span class="badge badge-blue">短视频投流</span>
+      <h3>放大优质短视频，驱动点击和加购</h3>
+      <ul>
+        <li><strong style="color:var(--ink)">投放目标选择：</strong>视频播放量（冷启动测内容）→ 商品点击（中期）→ 商品购买（成熟期），分阶段递进</li>
+        <li><strong style="color:var(--ink)">人群定向：</strong>装修兴趣人群 + 浴霸/家居关键词人群 + 竞品用户人群，初期放开定向让算法跑数据</li>
+        <li><strong style="color:var(--ink)">素材筛选原则：</strong>自然播放完播率＞25%的视频才值得投放，低于这个数继续优化</li>
+        <li><strong style="color:var(--ink)">出价策略：</strong>新素材用智能出价跑量，稳定出量后切手动出价控成本</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="badge badge-accent">直播间投流</span>
+      <h3>拉升直播间流量，提升在线人数和GMV</h3>
+      <ul>
+        <li><strong style="color:var(--ink)">投放目标：</strong>直播间成交是核心目标，不要只追求在线人数虚高</li>
+        <li><strong style="color:var(--ink)">时段策略：</strong>开播前15分钟开始投，前30分钟是关键窗口，把基础人数拉起来才能触发自然流量推送</li>
+        <li><strong style="color:var(--ink)">ROI目标：</strong>日常自播ROI目标≥3，大促期间可接受ROI≥1.5（用销量换市场份额）</li>
+        <li><strong style="color:var(--ink)">素材要求：</strong>直播间封面要有场景感，标题要突出当前最大福利，降低进入门槛</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 抖音内容发布节奏 -->
+  <div style="font-size:12px;font-weight:500;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">抖音账号内容发布节奏建议</div>
+  <div style="background:var(--paper-card);border:.5px solid var(--rule);border-radius:10px;overflow:hidden;margin-bottom:16px">
+    <div style="display:grid;grid-template-columns:100px 1fr 120px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-muted);padding:10px 20px;border-bottom:.5px solid var(--rule);background:var(--paper-warm)">
+      <div>时段</div>
+      <div>内容动作</div>
+      <div style="text-align:right">目标</div>
+    </div>
+    <div style="display:grid;grid-template-columns:100px 1fr 120px;padding:12px 20px;border-bottom:.5px solid var(--rule);font-size:12px;align-items:start">
+      <div style="color:var(--ink-muted);font-weight:500">每日</div>
+      <div style="color:var(--ink-mid)">晚8-11点自播（必须保持），至少发布1条短视频（直播切片或产品内容），回复评论区高频问题</div>
+      <div style="color:var(--ink-muted);text-align:right">流量基盘维持</div>
+    </div>
+    <div style="display:grid;grid-template-columns:100px 1fr 120px;padding:12px 20px;border-bottom:.5px solid var(--rule);font-size:12px;align-items:start">
+      <div style="color:var(--ink-muted);font-weight:500">每周</div>
+      <div style="color:var(--ink-mid)">发布2-3条精品内容（场景改造/功能演示/避坑攻略），至少1条千川小预算测试新素材，复盘本周数据</div>
+      <div style="color:var(--ink-muted);text-align:right">内容积累</div>
+    </div>
+    <div style="display:grid;grid-template-columns:100px 1fr 120px;padding:12px 20px;border-bottom:.5px solid var(--rule);font-size:12px;align-items:start">
+      <div style="color:var(--ink-muted);font-weight:500">大促前4周</div>
+      <div style="color:var(--ink-mid)">内容发布频次翻倍，提前种草主推产品，开始加大千川投放预算，锁定达人合播资源并预热开播</div>
+      <div style="color:var(--ink-muted);text-align:right">大促蓄水</div>
+    </div>
+    <div style="display:grid;grid-template-columns:100px 1fr 120px;padding:12px 20px;font-size:12px;align-items:start">
+      <div style="color:var(--ink-muted);font-weight:500">大促当周</div>
+      <div style="color:var(--ink-mid)">直播间24小时不间断，短视频每天3-5条配合直播预告，千川全力投放，达人合播冲量，监控ROI实时调整</div>
+      <div style="color:var(--ink-muted);text-align:right">爆发冲量</div>
+    </div>
+  </div>
+
+  <div class="insight insight-teal">
+    <strong>抖音和小红书最关键的区别：</strong>小红书内容的生命周期可以长达几个月（搜索流量持续），抖音内容的生命周期通常只有48-72小时。这意味着抖音需要更高的发布频率来维持流量，但每条内容的"精耕"程度可以适当降低——直播切片和UGC内容可以快速补量，把精力省下来集中打磨每周的2-3条精品视频。
+  </div>
+</section>
+
+<!-- ── 16 抖音SOP ── -->
+<section class="section" id="douyin-sop" style="border-bottom:none">
+  <div class="section-header">
+    <span class="section-num">17</span>
+    <h2>抖音运营核心 SOP</h2>
+  </div>
+  <p class="section-intro">
+    抖音运营的复杂性在于"直播+短视频+投流"三条线同时跑，PM需要建立清晰的工作流，避免三条线互相乱插手，各自出问题。
+  </p>
+
+  <!-- 新品抖音上市SOP -->
+  <div style="margin-bottom:24px">
+    <div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:12px;display:flex;align-items:center;gap:8px">
+      <span style="background:var(--accent);color:white;font-size:10px;padding:2px 8px;border-radius:20px;font-weight:500">SOP 04</span>
+      新品抖音上市传播流程
+    </div>
+    <div style="background:var(--paper-card);border:.5px solid var(--rule);border-radius:10px;overflow:hidden">
+      <div style="display:grid;grid-template-columns:40px 1fr;gap:0">
+        <div style="background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:16px;font-weight:600;color:white;min-height:52px">1</div>
+        <div style="padding:14px 18px;border-bottom:.5px solid var(--rule)">
+          <div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:4px">上市前4周：内容素材储备</div>
+          <div style="font-size:12px;color:var(--ink-mid)">完成产品拍摄（场景图+功能演示视频），制作5-8条不同角度的短视频备用；Brief同步给合作达人，开始达人内容制作；直播间场景布置完成（产品陈列+画面调整）</div>
+        </div>
+        <div style="background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:16px;font-weight:600;color:white;opacity:.75;min-height:52px">2</div>
+        <div style="padding:14px 18px;border-bottom:.5px solid var(--rule)">
+          <div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:4px">上市前2周：预热种草</div>
+          <div style="font-size:12px;color:var(--ink-mid)">开始发布"产品剧透"短视频（悬念感），达人发出新品评测内容；直播间开始提前预告新品上市时间；小流量千川测试各素材完播率，找出最佳素材</div>
+        </div>
+        <div style="background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:16px;font-weight:600;color:white;opacity:.55;min-height:52px">3</div>
+        <div style="padding:14px 18px;border-bottom:.5px solid var(--rule)">
+          <div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:4px">上市当天：爆发引爆</div>
+          <div style="font-size:12px;color:var(--ink-mid)">发布正式宣传内容，上线开门红直播（加大千川投流），达人同步发布种草视频，官方账号和达人账号形成声量合力；评论区维护，及时回答购买疑问</div>
+        </div>
+        <div style="background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:16px;font-weight:600;color:white;opacity:.35;min-height:52px">4</div>
+        <div style="padding:14px 18px">
+          <div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:4px">上市后2周：持续种草 + 口碑沉淀</div>
+          <div style="font-size:12px;color:var(--ink-mid)">把直播精彩片段剪成切片持续发布；收集首批用户开箱UGC，整理成素材投放；把效果好的千川素材持续跑量；把用户正面评论截图发布，强化口碑</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 自播数据健康检查 -->
+  <div style="margin-bottom:24px">
+    <div style="font-size:12px;font-weight:500;color:var(--ink);margin-bottom:12px;display:flex;align-items:center;gap:8px">
+      <span style="background:var(--blue);color:white;font-size:10px;padding:2px 8px;border-radius:20px;font-weight:500">SOP 05</span>
+      直播结束后的数据复盘清单（每场必做）
+    </div>
+    <div style="background:var(--paper-card);border:.5px solid var(--rule);border-radius:10px;padding:20px">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+        <div>
+          <div style="font-size:11px;font-weight:500;color:var(--teal);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">流量数据</div>
+          <ul class="clist" style="font-size:12px">
+            <li>场观人数 vs 上场对比，趋势是上升还是下降？</li>
+            <li>自然流量占比，有没有≥30%？</li>
+            <li>投流ROI达标了吗（日常≥3）？</li>
+            <li>最高同时在线人数是在哪个时段，做了什么动作？</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:500;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">转化数据</div>
+          <ul class="clist" style="font-size:12px">
+            <li>本场GMV和目标对比如何？</li>
+            <li>UV价值有没有比上场提高？</li>
+            <li>哪个产品转化率最高？话术哪里最有效？</li>
+            <li>加购率，有多少用户加了购物车没下单（待跟进）？</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:500;color:var(--amber);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">内容数据</div>
+          <ul class="clist" style="font-size:12px">
+            <li>哪个话术/产品段落用户停留最长？</li>
+            <li>退出率最高的时间点是哪里？（找问题）</li>
+            <li>评论区高频问题是什么？（下场话术优化方向）</li>
+            <li>有没有值得剪成切片的精彩片段？</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 抖音PM核心指标 -->
+  <div style="font-size:12px;font-weight:500;color:var(--ink-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px">抖音运营核心考核指标</div>
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">自播场均 GMV</div>
+      <div class="kpi-metric">直播核心产出</div>
+      <div class="kpi-note">每场自播成交额，每周看趋势，要持续上涨</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">直播间 UV 价值</div>
+      <div class="kpi-metric">场均 GMV / 场观</div>
+      <div class="kpi-note">衡量直播间的转化效率，是否在提升</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">千川投放 ROI</div>
+      <div class="kpi-metric">日常目标 ≥ 3</div>
+      <div class="kpi-note">短视频投流 + 直播间投流综合回报率</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">自然流量占比</div>
+      <div class="kpi-metric">目标 ≥ 30%</div>
+      <div class="kpi-note">账号权重是否在积累，不能完全依赖付费</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">短视频完播率</div>
+      <div class="kpi-metric">目标 ≥ 30%</div>
+      <div class="kpi-note">内容吸引力指标，低于15%需要重做</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">粉丝增长量</div>
+      <div class="kpi-metric">月度净增粉</div>
+      <div class="kpi-note">账号长期价值积累，私域流量池扩大</div>
+    </div>
+  </div>
+
+  <div class="insight" style="margin-top:20px">
+    <strong>抖音运营最容易犯的错：</strong>陷入"只做投流、不做内容"的恶性循环——投流数据好看，但账号权重越来越低，自然流量越来越少，最终完全依赖付费才能维持销量，成本不断攀升。正确姿势是：自播要每天开，短视频要持续发，让账号权重稳定积累，千川投流只是放大器，不是替代内容的工具。
+  </div>
+</section>
+
+</div><!-- /page -->
+
+<footer>
+  <div class="footer-brand">AUPU 奥普 · 品牌策划PM运营报告</div>
+  <div class="footer-note">Brand Strategy & New Media Operations Framework · 2025</div>
+</footer>
 
 </body>
 </html>
